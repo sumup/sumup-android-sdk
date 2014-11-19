@@ -9,6 +9,6 @@
       android:id="@+id/button"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Hit me"
+      android:text="Charge"
       android:layout_gravity="center"/>
 </FrameLayout>

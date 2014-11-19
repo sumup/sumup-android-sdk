@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.sumup.sdksampleapp"
-  xmlns:tools="http://schemas.android.com/tools">
+  package="com.sumup.sdksampleapp">
 
     <application
       android:allowBackup="true"
-      android:icon="@drawable/ic_launcher2"
+      android:icon="@drawable/icon"
       android:label="@string/app_name"
-      tools:replace="icon, label">
+      android:name=".SampleApplication"
+      android:theme="@style/AppTheme">
 
     <activity
       android:name="com.sumup.sdksampleapp.MainActivity"
@@ -19,11 +19,11 @@
         </activity>
         <activity
           android:name="com.sumup.sdksampleapp.ResponseActivity"
-          android:label="@string/app_name">
+          android:label="Payment Result">
             <intent-filter>
-                <action android:name="com.sumup.PaymentResult"></action>
-                <category android:name="android.intent.category.DEFAULT"></category>
-                <category android:name="android.intent.category.BROWSABLE"></category>
+                <action android:name="com.sumup.sdksampleapp.ResponseActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
             </intent-filter>
         </activity>
     </application>
