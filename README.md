@@ -34,6 +34,23 @@ This is a sample application for the SumUp Android SDK.
 	  </intent-filter>
 	</activity>
 	```
+	
++ Initialize the SumUp Components
+	```java
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		SumUpState.init(this);
+	}
+
+	@Override
+	public void onConfigurationChanged(android.content.res.Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		SumUpState.Instance().updateLocales();
+	}
+	```
+ 
+
 
 
 + Make a payment
