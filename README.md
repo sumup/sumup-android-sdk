@@ -14,14 +14,14 @@ This is a sample application for the SumUp Android SDK.
 	```groovy
 	allprojects {
 	    repositories {
-	        maven { url = 'https://github.com/sumup/Android-MerchantSDK/raw/master' }
+	        maven { url 'https://maven.sumup.com/releases' }
 	    }
 	}
 	```
 
 	Add the dependency to a module
 	```groovy
-	compile 'com.sumup:merchant-sdk:1.51.2@aar'
+	compile 'com.sumup:merchant-sdk:1.52.0@aar'
 	```
 
 + Provide a callback activity
