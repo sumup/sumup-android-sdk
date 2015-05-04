@@ -2,7 +2,7 @@
 
 This is a sample application for the SumUp Android SDK.
 
-**Caution: Alpha version - All APIs and dependencies are subject to change!**
+**Note: Alpha version - All APIs and dependencies are subject to change**
 
 ##How to use the SDK
 
