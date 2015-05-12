@@ -7,7 +7,7 @@
       android:icon="@drawable/icon"
       android:label="@string/app_name"
       android:name=".SampleApplication"
-      android:theme="@style/AppTheme">
+      android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
 
     <activity
       android:name="com.sumup.sdksampleapp.MainActivity"

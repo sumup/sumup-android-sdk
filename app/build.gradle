@@ -22,7 +22,7 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:20.0.0'
 
-    compile ('com.sumup:merchant-sdk:1.52.0@aar') {
+    compile ('com.sumup:merchant-sdk:1.52.0.1@aar') {
         transitive = true
     }
 }

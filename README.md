@@ -21,7 +21,7 @@ This is a sample application for the SumUp Android SDK.
 
 	Add the dependency to a module
 	```groovy
-	compile 'com.sumup:merchant-sdk:1.52.0@aar'
+	compile 'com.sumup:merchant-sdk:1.52.0.1@aar'
 	```
 
 + Provide a callback activity
@@ -57,30 +57,22 @@ This is a sample application for the SumUp Android SDK.
 
 + Make a payment
 	```java
-	// create SumUpPayment with mandatory parameters
-	String affiliateKey = "abcd1234wxyz";
-	double productAmount = 12.34;
-	String currency = "EUR";
+    SumUpPayment payment = SumUpPayment.builder()
+            //mandatory parameters
+            .affiliateKey("abcd1234wxyz")
+            .productAmount(1.23)
+            .currency("EUR")
+                    // optional: add details
+            .productTitle("Taxi Ride")
+            .receiptEmail("customer@mail.com")
+            .receiptSMS("+3531234567890")
+                    // optional: Add metadata
+            .addAdditionalInfo("AccountId", "taxi0334")
+            .addAdditionalInfo("From", "Berlin")
+            .addAdditionalInfo("To", "Paris")
+            .build();
 
-	// reference YOUR OWN activity here that should receive the payment result
-	String resultActivity = "com.example.ResultActivity";
-
-	SumUpPayment sumUpPayment = new SumUpPayment(affiliateKey, productAmount, currency, resultActivity, this);
-
-	// optional: add details
-	sumUpPayment.setProductTitle("Taxi Ride");
-	sumUpPayment.setReceiptEmail("customer@mail.com");
-	sumUpPayment.setReceiptSMS("+3531234567890");
-
-	// optional: Add additional metadata
-	HashMap<String, String> additionalInfo = new HashMap(3);
-	additionalInfo.put("AccountId","taxi0334");
-	additionalInfo.put("From","Here");
-	additionalInfo.put("To","There");
-	sumUpPayment.setAdditionalInfo(additionalInfo);
-
-	// start the payment process
-	sumUpPayment.openPaymentActivity(this);
+    SumUpAPI.openPaymentActivity(MainActivity.this, ResponseActivity.class, payment);
 	```
 
 
