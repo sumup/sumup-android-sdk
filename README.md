@@ -4,11 +4,11 @@ This is a sample application for the SumUp Android SDK.
 
 **Note: Preview build - All APIs and dependencies are subject to change**
 
+[Full SumUp API Documentation](https://sumup.com/integration)
+
 ##How to use the SDK
 
-
-+ Get a developer Key: https://sumup.co.uk/api
-
++ Create a SumUp account and get an affiliate key [here](https://me.sumup.com/integration-tools)
 
 + Add the repository to your gradle dependencies 
 	```groovy
