@@ -1,8 +1,10 @@
 # Android-MerchantSDK
 
-This is a sample application for the SumUp Android SDK.
+This is a sample application for the SumUp Android SDK. 
 
 **Note: Preview build - All APIs and dependencies are subject to change**
+
+MinSDK is currently 10 but will be 14 soon
 
 [Full SumUp API Documentation](https://sumup.com/integration)
 
