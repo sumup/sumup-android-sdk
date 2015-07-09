@@ -2,9 +2,11 @@
 
 This is a sample application for the SumUp Android SDK. 
 
-**Note: Preview build - All APIs and dependencies are subject to change**
+**Preview build - All APIs and dependencies are subject to change. MinSDK is currently 10 but will soon be 15**
 
-MinSDK is currently 10 but will be 14 soon
+SumUp Android SDK [Changelog](https://github.com/sumup/Android-MerchantSDK/blob/master/CHANGELOG.md)
+
+
 
 [Full SumUp API Documentation](https://sumup.com/integration)
 
@@ -23,7 +25,7 @@ MinSDK is currently 10 but will be 14 soon
 
 	Add the dependency to a module
 	```groovy
-	compile 'com.sumup:merchant-sdk:1.52.0.1@aar'
+	compile 'com.sumup:merchant-sdk:1.52.1@aar'
 	```
 
 + Provide a callback activity
@@ -64,19 +66,40 @@ MinSDK is currently 10 but will be 14 soon
             .affiliateKey("abcd1234wxyz")
             .productAmount(1.23)
             .currency("EUR")
-                    // optional: add details
+            // optional: add details
             .productTitle("Taxi Ride")
             .receiptEmail("customer@mail.com")
             .receiptSMS("+3531234567890")
-                    // optional: Add metadata
+            // optional: Add metadata
             .addAdditionalInfo("AccountId", "taxi0334")
             .addAdditionalInfo("From", "Berlin")
             .addAdditionalInfo("To", "Paris")
+            //optional: foreign transaction ID, must be unique for each merchant!
+            .foreignTransactionId(UUID.randomUUID().toString())
             .build();
 
     SumUpAPI.openPaymentActivity(MainActivity.this, ResponseActivity.class, payment);
 	```
 
+#Additional Documentation
+
++ To log out the currently logged in SumUp account, call 
+ ```java 
+ 	SumUpAPI.logout();
+ ```
+
+
++ To enable ProGuard, add the following to your gradle file
+	
+   ```grovy
+   buildTypes {
+        release {
+            //All ProGuard rules required by the SumUp SDK are packaged with the library
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+        }
+    }
+   ```
 
 
 
