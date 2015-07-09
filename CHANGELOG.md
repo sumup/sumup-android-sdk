@@ -1,4 +1,4 @@
-* Changelog
+# Changelog
 
 ## Version 1.52.1
 
