@@ -14,14 +14,10 @@ public class ResponseActivity extends Activity {
 
         Bundle extra = getIntent().getExtras();
         if (extra != null) {
-            if (extra.getBoolean(SumUpAPI.EXTRA_PAYMENT_SUCESSFUL)) {
-                ((TextView) findViewById(R.id.result)).setText("Result: Payment successful");
-            } else {
-                ((TextView) findViewById(R.id.result)).setText("Result: Payment failed");
-            }
+            ((TextView) findViewById(R.id.result)).setText("Result code: " + extra.getInt(SumUpAPI.EXTRA_RESULT_CODE));
 
             ((TextView) findViewById(R.id.result_msg)).setText(
-                    "Message: " + extra.getString(SumUpAPI.EXTRA_RESPONSE_MSG));
+                    "Message: " + extra.getString(SumUpAPI.EXTRA_RESULT_MSG));
 
             String txCode = extra.getString(SumUpAPI.EXTRA_TRANSACTION_CODE);
             if (txCode != null) {

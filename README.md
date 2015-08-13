@@ -1,35 +1,34 @@
-# Android-MerchantSDK
+# SumUp Android SDK
 
-This is a sample application for the SumUp Android SDK. 
+**Preview build - All APIs and dependencies are subject to change. MinSDK is now 15**
 
-**Preview build - All APIs and dependencies are subject to change. MinSDK is currently 10 but will soon be 15**
+_NOTE: Please make sure to run 'gradle clean' after updating to version 1.53.0_
 
-SumUp Android SDK [Changelog](https://github.com/sumup/Android-MerchantSDK/blob/master/CHANGELOG.md)
+## I. Getting Started
+* Create a SumUp account and get an affiliate key [here](https://me.sumup.com/integration-tools)
 
+## II. How to integrate the SumUp SDK with your app
+* You can use the sample app provided in this repository as a reference
+* [Changelog](https://github.com/sumup/Android-MerchantSDK/blob/master/CHANGELOG.md)
+* [Full SumUp API Documentation](https://sumup.com/integration)
+* MinSdk : 15
 
+##### 1. Add the repository to your gradle dependencies
+```groovy
+allprojects {
+   repositories {
+      maven { url 'https://maven.sumup.com/releases' }
+   }
+}
+```
 
-[Full SumUp API Documentation](https://sumup.com/integration)
+##### 2. Add the dependency to a module 
+```groovy
+compile 'com.sumup:merchant-sdk:1.53.0@aar'
+```
 
-##How to use the SDK
-
-+ Create a SumUp account and get an affiliate key [here](https://me.sumup.com/integration-tools)
-
-+ Add the repository to your gradle dependencies 
-	```groovy
-	allprojects {
-	    repositories {
-	        maven { url 'https://maven.sumup.com/releases' }
-	    }
-	}
-	```
-
-	Add the dependency to a module
-	```groovy
-	compile 'com.sumup:merchant-sdk:1.52.1@aar'
-	```
-
-+ Provide a callback activity
-	```xml
+##### 3. Provide a callback activity
+```xml
 	<activity android:name="ResultActivity"  android:label="Payment Result">
 	  <intent-filter>
 	    <action android:name="com.example.ResultActivity"></action>
@@ -37,10 +36,10 @@ SumUp Android SDK [Changelog](https://github.com/sumup/Android-MerchantSDK/blob/
 	    <category android:name="android.intent.category.BROWSABLE"></category>
 	  </intent-filter>
 	</activity>
-	```
+```
 	
-+ Initialize the SumUp components in your Application
-	```java
+##### 4. Initialize the SumUp components in your app
+```java
 	public class SampleApplication extends Application {
 	
 	@Override
@@ -52,15 +51,12 @@ SumUp Android SDK [Changelog](https://github.com/sumup/Android-MerchantSDK/blob/
 	@Override
 	public void onConfigurationChanged(android.content.res.Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
-		SumUpState.Instance().updateLocales();
+		SumUpState.updateLocales();
 	}
-	```
- 
+```
 
-
-
-+ Make a payment
-	```java
+##### 5. Make a payment
+```java
     SumUpPayment payment = SumUpPayment.builder()
             //mandatory parameters
             .affiliateKey("abcd1234wxyz")
@@ -72,26 +68,43 @@ SumUp Android SDK [Changelog](https://github.com/sumup/Android-MerchantSDK/blob/
             .receiptSMS("+3531234567890")
             // optional: Add metadata
             .addAdditionalInfo("AccountId", "taxi0334")
-            .addAdditionalInfo("From", "Berlin")
-            .addAdditionalInfo("To", "Paris")
-            //optional: foreign transaction ID, must be unique for each merchant!
-            .foreignTransactionId(UUID.randomUUID().toString())
+            .addAdditionalInfo("From", "Paris")
+            .addAdditionalInfo("To", "Berlin")
+            //optional: foreign transaction ID, must be unique!
+            .foreignTransactionId(UUID.randomUUID().toString())  // can not exceed 128 chars
             .build();
 
     SumUpAPI.openPaymentActivity(MainActivity.this, ResponseActivity.class, payment);
-	```
+```
 
-#Additional Documentation
+#III. Additional features
 
-+ To log out the currently logged in SumUp account, call 
+#####1. Include a transaction identifier
+
+When setting up the SumUpPayment object, it is possible to pass an optional foreignTransactionID parameter. This identifier will be associated with the transaction and can be used to retrieve this transaction later. See [API documentation](https://sumup.com/integration#transactionReportingAPIs) for details. Please make sure that this ID is unique within the scope of the SumUp merchant account and sub-accounts. It must not be longer than 128 characters.
+
+#####2. Log out the currently logged in SumUp account
  ```java 
  	SumUpAPI.logout();
  ```
 
+#####3. Status code
+A result code is provided within the Bundle that is passed back to the callback activity.
 
-+ To enable ProGuard, add the following to your gradle file
-	
-   ```grovy
+ ```java 
+ 	int resultCode = getIntent().getExtras()getInt(SumUpAPI.EXTRA_RESULT_CODE);
+ ```
+ 
+Possible values are : 
+
+* SumUpAPI.TRANSACTION_SUCCESSFUL = 1
+* SumUpAPI.ERROR_TRANSACTION_FAILED = 2
+* SumUpAPI.ERROR_GEOLOCATION_REQUIRED = 3
+* SumUpAPI.ERROR_INVALID_PARAM = 4
+
+
+#####4. Enable ProGuard	
+```grovy
    buildTypes {
         release {
             //All ProGuard rules required by the SumUp SDK are packaged with the library
@@ -99,7 +112,4 @@ SumUp Android SDK [Changelog](https://github.com/sumup/Android-MerchantSDK/blob/
             proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
     }
-   ```
-
-
-
+```
