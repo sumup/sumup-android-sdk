@@ -1,5 +1,8 @@
 #Changelog
 
+## Version 1.53.1
+* [HOTFIX] Solved an issue that may lead to a crash when not applying Proguard to the project
+
 ## Version 1.53.0
 * [UPDATE] Raised minSdkVersion to 15
 * [ADDED] Result Code for the transaction

@@ -2,7 +2,7 @@
 
 **Preview build - All APIs and dependencies are subject to change. MinSDK is now 15**
 
-_NOTE: Please make sure to run 'gradle clean' after updating to version 1.53.0_
+_NOTE: Please make sure to run 'gradle clean' after updating to version 1.53.+_
 
 ## I. Getting Started
 * Create a SumUp account and get an affiliate key [here](https://me.sumup.com/integration-tools)
@@ -24,7 +24,9 @@ allprojects {
 
 ##### 2. Add the dependency to a module 
 ```groovy
-compile 'com.sumup:merchant-sdk:1.53.0@aar'
+compile('com.sumup:merchant-sdk:1.53.1@aar') {
+        transitive = true
+    }
 ```
 
 ##### 3. Provide a callback activity

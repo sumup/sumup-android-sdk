@@ -9,7 +9,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 20
         versionCode 1
-        versionName "1.53.0"
+        versionName "1.53.1"
     }
 
     packagingOptions {
@@ -30,7 +30,7 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:20.0.0'
 
-    compile('com.sumup:merchant-sdk:1.53.0@aar') {
+    compile('com.sumup:merchant-sdk:1.53.1@aar') {
         transitive = true
     }
 }
