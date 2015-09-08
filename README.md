@@ -24,7 +24,7 @@ allprojects {
 
 ##### 2. Add the dependency to a module 
 ```groovy
-compile('com.sumup:merchant-sdk:1.53.1@aar') {
+compile('com.sumup:merchant-sdk:1.54.0@aar') {
         transitive = true
     }
 ```
@@ -61,9 +61,10 @@ compile('com.sumup:merchant-sdk:1.53.1@aar') {
 ```java
     SumUpPayment payment = SumUpPayment.builder()
             //mandatory parameters
-            .affiliateKey("abcd1234wxyz")
+            // Your affiliate key is bound to the applicationID entered in the SumUp dashboard at https://me.sumup.com/integration-tools
+            .affiliateKey("YOUR_AFFILIATE_KEY")
             .productAmount(1.23)
-            .currency("EUR")
+            .currency(SumUpPayment.Currency.EURO)
             // optional: add details
             .productTitle("Taxi Ride")
             .receiptEmail("customer@mail.com")
@@ -86,7 +87,7 @@ compile('com.sumup:merchant-sdk:1.53.1@aar') {
 When setting up the SumUpPayment object, it is possible to pass an optional foreignTransactionID parameter. This identifier will be associated with the transaction and can be used to retrieve this transaction later. See [API documentation](https://sumup.com/integration#transactionReportingAPIs) for details. Please make sure that this ID is unique within the scope of the SumUp merchant account and sub-accounts. It must not be longer than 128 characters.
 
 #####2. Log out the currently logged in SumUp account
- ```java 
+ ```java
  	SumUpAPI.logout();
  ```
 
@@ -104,8 +105,12 @@ Possible values are :
 * SumUpAPI.ERROR_GEOLOCATION_REQUIRED = 3
 * SumUpAPI.ERROR_INVALID_PARAM = 4
 
+#####4. Clear current Pin+ settings
+ ```java
+ 	SumUpAPI.clearPinPlusSettings();
+ ```
 
-#####4. Enable ProGuard	
+#####5. Enable ProGuard
 ```grovy
    buildTypes {
         release {

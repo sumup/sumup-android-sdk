@@ -1,5 +1,11 @@
 #Changelog
 
+## Version 1.54.0
+* [ADDED] Added method to clear the current Pin+ settings - `SumUpAPI.clearPinPlusSettings()`
+* [IMPROVEMENT] Currency is now passed as an Enum - `.currency("EUR")` > `.currency(SumUpPayment.Currency.EURO)`
+* [IMPROVEMENT] Updated design to align with material design guidelines
+* [FIXED] Fixed internal Proguard rules that may lead to a rare crash if Proguard is not enabled in the host app
+
 ## Version 1.53.1
 * [HOTFIX] Solved an issue that may lead to a crash when not applying Proguard to the project
 

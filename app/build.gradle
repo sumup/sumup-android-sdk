@@ -7,9 +7,9 @@ android {
     defaultConfig {
         applicationId "com.sumup.sdksampleapp"
         minSdkVersion 15
-        targetSdkVersion 20
+        targetSdkVersion 21
         versionCode 1
-        versionName "1.53.1"
+        versionName "1.54.0"
     }
 
     packagingOptions {
@@ -28,9 +28,9 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:20.0.0'
+    compile 'com.android.support:appcompat-v7:22.2.1'
 
-    compile('com.sumup:merchant-sdk:1.53.1@aar') {
+    compile('com.sumup:merchant-sdk:1.54.0@aar') {
         transitive = true
     }
 }

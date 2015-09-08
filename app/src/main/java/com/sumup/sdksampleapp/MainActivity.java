@@ -23,7 +23,10 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 SumUpPayment payment = SumUpPayment.builder()
                         // mandatory parameters
-                        .affiliateKey("7ca84f17-84a5-4140-8df6-6ebeed8540fc").productAmount(1.23).currency("EUR")
+                        // Your affiliate key is bound to the applicationID entered in the SumUp dashboard at https://me.sumup.com/integration-tools
+                        .affiliateKey("7ca84f17-84a5-4140-8df6-6ebeed8540fc")
+                        .productAmount(1.23)
+                        .currency(SumUpPayment.Currency.EURO)
                         // optional: add details
                         .productTitle("Taxi Ride").receiptEmail("customer@mail.com").receiptSMS("+3531234567890")
                         // optional: Add metadata
@@ -43,6 +46,14 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 SumUpAPI.logout();
+            }
+        });
+
+        Button btnClearPinPlusSettings = (Button) findViewById(R.id.button_clear_pinplus_settings);
+        btnClearPinPlusSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SumUpAPI.clearPinPlusSettings();
             }
         });
 
