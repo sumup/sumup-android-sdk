@@ -104,6 +104,7 @@ Possible values are :
 * SumUpAPI.ERROR_TRANSACTION_FAILED = 2
 * SumUpAPI.ERROR_GEOLOCATION_REQUIRED = 3
 * SumUpAPI.ERROR_INVALID_PARAM = 4
+* SumUpAPI.ERROR_INVALID_TOKEN = 5
 
 #####4. Clear current Pin+ settings
  ```java
