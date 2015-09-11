@@ -1,5 +1,9 @@
 #Changelog
 
+## Version 1.54.1
+
+* [FIXED] Fixed bug that may lead to a crash when switching to landscape mode
+
 ## Version 1.54.0
 * [ADDED] Added method to clear the current Pin+ settings - `SumUpAPI.clearPinPlusSettings()`
 * [IMPROVEMENT] Currency is now passed as an Enum - `.currency("EUR")` > `.currency(SumUpPayment.Currency.EURO)`
