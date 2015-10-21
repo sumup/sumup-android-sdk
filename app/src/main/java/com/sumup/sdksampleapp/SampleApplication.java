@@ -1,7 +1,7 @@
 package com.sumup.sdksampleapp;
 
 import android.app.Application;
-import com.kaching.merchant.SumUpState;
+import com.sumup.merchant.api.SumUpState;
 
 public class SampleApplication extends Application {
 

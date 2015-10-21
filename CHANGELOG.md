@@ -1,8 +1,15 @@
 #Changelog
 
-## Version 1.54.1
+## Version 1.55.0
+* [IMPROVEMENT] Encapsulated response flags in a static `SumUpAPI.Response` class - `SumUpAPI.EXTRA_RESULT_CODE` > `SumUpAPI.Response.RESULT_CODE` (see [README](https://github.com/sumup/sumup-android-sdk/blob/master/README.md#3-response-flags) for more info)
+* [IMPROVEMENT] Encapsulated response code flags in a static `SumUpAPI.Response.ResultCode` class - `SumUpAPI.TRANSACTION_SUCCESSFUL` > `SumUpAPI.Response.ResultCode.TRANSACTION_SUCCESSFUL`
+* [IMPROVEMENT] Changed currency enum from name of the currency to the ISO 4217 currency code - `.currency(SumUpPayment.Currency.EURO)` > `.currency(SumUpPayment.Currency.EUR)`
+* [IMPROVEMENT] Renamed package of SumUpAPI and SumUpPayment classes - `import com.kaching.merchant.SumUpAPI` > `import com.sumup.merchant.api.SumUpAPI`, `import com.kaching.merchant.SumUpPayment
+` > `import com.sumup.merchant.api.SumUpPayment`, and `com.kaching.merchant.SumUpState` > `com.sumup.merchant.api.SumUpState`
+* [IMPROVEMENT] Various bugfixes
 
-* [FIXED] Fixed bug that may lead to a crash when switching to landscape mode
+## Version 1.54.1
+* [FIXED] Fixed a bug that may lead to a crash in landscape mode
 
 ## Version 1.54.0
 * [ADDED] Added method to clear the current Pin+ settings - `SumUpAPI.clearPinPlusSettings()`

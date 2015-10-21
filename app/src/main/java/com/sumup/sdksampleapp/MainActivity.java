@@ -5,8 +5,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import com.kaching.merchant.SumUpAPI;
-import com.kaching.merchant.SumUpPayment;
+import com.sumup.merchant.api.SumUpAPI;
+import com.sumup.merchant.api.SumUpPayment;
+
 
 import java.util.UUID;
 
@@ -26,7 +27,7 @@ public class MainActivity extends Activity {
                         // Your affiliate key is bound to the applicationID entered in the SumUp dashboard at https://me.sumup.com/integration-tools
                         .affiliateKey("7ca84f17-84a5-4140-8df6-6ebeed8540fc")
                         .productAmount(1.23)
-                        .currency(SumUpPayment.Currency.EURO)
+                        .currency(SumUpPayment.Currency.EUR)
                         // optional: add details
                         .productTitle("Taxi Ride").receiptEmail("customer@mail.com").receiptSMS("+3531234567890")
                         // optional: Add metadata
