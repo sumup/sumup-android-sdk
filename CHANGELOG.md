@@ -1,5 +1,11 @@
 #Changelog
 
+For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
+
+## Version 1.55.1
+* [INCUBATION] It is now possible to call the SDK through a startActivityForResult pattern by calling SumUpApi.openPaymentActivity(Activity activity, SumUpPayment payment, int requestCode)
+* [IMPROVEMENT] Various bugfixes and enhancements
+
 ## Version 1.55.0
 * [IMPROVEMENT] Encapsulated response flags in a static `SumUpAPI.Response` class - `SumUpAPI.EXTRA_RESULT_CODE` > `SumUpAPI.Response.RESULT_CODE` (see [README](https://github.com/sumup/sumup-android-sdk/blob/master/README.md#3-response-flags) for more info)
 * [IMPROVEMENT] Encapsulated response code flags in a static `SumUpAPI.Response.ResultCode` class - `SumUpAPI.TRANSACTION_SUCCESSFUL` > `SumUpAPI.Response.ResultCode.TRANSACTION_SUCCESSFUL`
@@ -37,5 +43,3 @@
 * Logout function added
 * Added foreign transaction ID to sample app: Pass a unique identifier that will be associated with this transaction in the SumUp backend
 * Reduced SDK footprint by 30%
-
-For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)

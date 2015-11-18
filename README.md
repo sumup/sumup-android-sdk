@@ -3,8 +3,6 @@
 [![Platform](https://img.shields.io/badge/Platform-Android-brightgreen.svg?style=flat-square)](http://developer.android.com/index.html)
 [![API](https://img.shields.io/badge/API-15%2B-orange.svg?style=flat-square)](http://developer.android.com/about/versions/android-4.0.3html)
 
-**Preview build - All APIs and dependencies are subject to change.**
-
 _NOTE: Please make sure to run 'gradle clean' after updating to version 1.53.+_
 
 ## I. Getting Started
@@ -129,4 +127,25 @@ Possible values are :
             proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
     }
+```
+
+#IV. Incubating feature
+
+#####1. StartActivityForResult pattern
+
+If you prefer to receive the result of a transaction in the same Activity, open the PaymentActivity with :
+ 
+```java
+   SumUpAPI.openPaymentActivity(MainActivity.this, payment, 1);
+```
+
+Then, you can react on the result of a transaction with : 
+
+```java
+   @Override
+   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+      if (requestCode == 1 && data != null) {
+         // Handle the response here
+      }
+   }
 ```
