@@ -3,7 +3,7 @@
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
 ## Version 1.55.1
-* [INCUBATION] It is now possible to call the SDK through a startActivityForResult pattern by calling SumUpApi.openPaymentActivity(Activity activity, SumUpPayment payment, int requestCode)
+* [INCUBATING] It is now possible to call the SDK through a startActivityForResult pattern by calling `SumUpApi.openPaymentActivity(Activity activity, SumUpPayment payment, int requestCode)`
 * [IMPROVEMENT] Various bugfixes and enhancements
 
 ## Version 1.55.0
