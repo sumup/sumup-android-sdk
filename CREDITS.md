@@ -34,9 +34,9 @@ This plugin is created by Hugo Visser and released in the [public domain](http:/
 
 ---
 
-[Jackson Databind](https://github.com/FasterXML/jackson-databind)
+[Gson](https://github.com/google/gson/)
 
-Project is licensed under [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+Gson is released under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). Copyright 2008 Google Inc.
 
 ---
 
@@ -46,13 +46,7 @@ Project is licensed under [Apache License 2.0](http://www.apache.org/licenses/LI
 
 ---
 
-[ListViewAnimations](https://github.com/nhaarman/ListViewAnimations)
-
-[LICENCE](https://github.com/nhaarman/ListViewAnimations/blob/master/LICENSE.txt)
-
----
-
-[Material-ish Progress] https://github.com/pnikosis/materialish-progress
+[Material-ish Progress](https://github.com/pnikosis/materialish-progress)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -65,12 +59,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
----
-
-[NineOldAndroids](http://nineoldandroids.com/)
-
-Developed and distributed under the Apache License, Version 2.0.
 
 ---
 

@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.sumup.sdksampleapp"
         minSdkVersion 15
-        targetSdkVersion 21
+        targetSdkVersion 22
         versionCode 1
-        versionName "1.55.1"
+        versionName "1.60.0"
     }
 
     packagingOptions {
@@ -21,8 +21,8 @@ android {
     buildTypes {
         debug {
             //All ProGuard rules required by the SumUp SDK are packaged with the library
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt')
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
     }
 }
@@ -30,7 +30,7 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
 
-    compile('com.sumup:merchant-sdk:1.55.1@aar') {
+    compile('com.sumup:merchant-sdk:1.60.0@aar') {
         transitive = true
     }
 }

@@ -17,14 +17,5 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-          android:name="com.sumup.sdksampleapp.ResponseActivity"
-          android:label="Payment Result">
-            <intent-filter>
-                <action android:name="com.sumup.sdksampleapp.ResponseActivity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-            </intent-filter>
-        </activity>
     </application>
 </manifest>

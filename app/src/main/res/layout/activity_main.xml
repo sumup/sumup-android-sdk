@@ -5,6 +5,7 @@
   android:layout_height="match_parent"
   tools:context=".MainActivity"
   android:orientation="vertical"
+  android:padding="16dp"
   android:gravity="center">
 
     <Button
@@ -30,4 +31,58 @@
       android:text="Clear Pin+ Settings"
       android:layout_gravity="center"/>
 
+  <ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+     <TextView
+       android:id="@+id/result"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textSize="18sp"
+       android:padding="8dp"
+       tools:text="Result code: -"
+       android:layout_gravity="center"/>
+
+      <TextView
+        android:id="@+id/result_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="8dp"
+        tools:text="Message: -"
+        android:layout_gravity="center"/>
+
+      <TextView
+        android:id="@+id/tx_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="8dp"
+        tools:text="Transaction Code: -"
+        android:layout_gravity="center"/>
+
+      <TextView
+        android:id="@+id/receipt_sent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="8dp"
+        tools:text="Receipt sent : -"/>
+
+      <TextView
+        android:id="@+id/tx_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="8dp"
+        tools:text="Transaction Info : -"/>
+
+    </LinearLayout>
+  </ScrollView>
 </LinearLayout>
