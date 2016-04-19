@@ -61,7 +61,7 @@ Initialize the SumUp components in your app
 ```java
     SumUpPayment payment = SumUpPayment.builder()
             //mandatory parameters
-            // Your affiliate key is bound to the applicationID entered in the SumUp dashboard at https://me.sumup.com/integration-tools
+            // Your affiliate key is bound to the applicationID entered in the SumUp dashboard at https://me.sumup.com/developers
             .affiliateKey("YOUR_AFFILIATE_KEY")
             .productAmount(1.23)
             .currency(SumUpPayment.Currency.EUR)
