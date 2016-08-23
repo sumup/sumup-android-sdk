@@ -26,26 +26,11 @@ allprojects {
 
 Add the dependency to a module
 ```groovy
-compile('com.sumup:merchant-sdk:1.60.0@aar') {
+compile('com.sumup:merchant-sdk:1.61.0@aar') {
         transitive = true
     }
 ```
 
-Gradle Plugin 1.4+: Enable vector drawable support
-
-```groovy
-android {
-
-    [...]
-
-    defaultConfig {
-       [...]
-
-        // Allows for vector drawables in SumUp SDK
-        generatedDensities = []
-    }
-```
-	
 Initialize the SumUp components in your app
 ```java
 	public class SampleApplication extends Application {
@@ -134,6 +119,7 @@ Several response fields are available when the callback activity is called :
     * SumUpAPI.Response.ResultCode.ERROR_INVALID_PARAM = 4
     * SumUpAPI.Response.ResultCode.ERROR_INVALID_TOKEN = 5
     * SumUpAPI.Response.ResultCode.ERROR_NO_CONNECTIVITY = 6
+    * SumUpAPI.Response.ResultCode.ERROR_PERMISSION_DENIED = 7
 * SumUpAPI.Response.MESSAGE
   * Type : String
   * Description : A human readable message describing the result of the payment
@@ -191,13 +177,13 @@ If the token is invalid, `SumUpAPI.Response.ResultCode.ERROR_INVALID_TOKEN` will
 
 #####7. Runtime permissions for API Level 23
 
-If you target 23, please ask the user to grant the following runtime permissions:
+From 1.61.0 and up, the SumUp SDK will request all required permissions when needed. No further action is required.
+
+If you are using 1.60.0 and below, request the following permissions:
 
 * `ACCESS_COARSE_LOCATION`
 * `ACCESS_FINE_LOCATION`
 
-If you want to use audio readers, please also ask for
-
-* `RECORD_AUDIO`
+For audio readers, please also ask for `RECORD_AUDIO`
 
 

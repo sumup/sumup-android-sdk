@@ -2,6 +2,16 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 1.61.0
+* [UPDATE] Raises targetSdkVersion to 23 - SDK will now request runtime permissions on API 23 level and up
+* [UPDATE] Uses Vector support library - It is no longer required to set `generatedDensities = []`
+* [API CHANGE] ResultCode.ERROR_PERMISSION_DENIED is returned if a runtime permission is denied by the user on API level 23+
+* [ADDED] Adds support for swiss francs - `Currency.CHF`
+* [IMPROVEMENT] Complete redesign of the PIN+ reader’s setup flow
+* [IMPROVEMENT] Improved bluetooth discovery and connection stability
+* [IMPROVEMENT] Removes `materialish-progress` dependency
+* [UPDATE] Replace `frozen` dependency with `icepick`
+
 ## Version 1.60.0
 * [API CHANGE] Removes SumUpState.updateLocales() - SDK users no longer have to call this
 * [API CHANGE] Adds use of vector drawables to reduce the size of the SDK - See [README](https://github.com/sumup/sumup-android-sdk/blob/master/README.md#2-set-up-the-sdk) for required changes
