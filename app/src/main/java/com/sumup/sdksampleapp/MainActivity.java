@@ -1,6 +1,5 @@
 package com.sumup.sdksampleapp;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +27,7 @@ public class MainActivity extends Activity {
                         // mandatory parameters
                         // Please go to https://me.sumup.com/developers to get your Affiliate Key by entering the application ID of your app. (e.g. com.sumup.sdksampleapp)
                         .affiliateKey("7ca84f17-84a5-4140-8df6-6ebeed8540fc")
-                        .productAmount(1.23)
+                        .productAmount(1.12)
                         .currency(SumUpPayment.Currency.EUR)
                         // optional: add details
                         .productTitle("Taxi Ride")
@@ -54,11 +53,11 @@ public class MainActivity extends Activity {
             }
         });
 
-        Button btnClearPinPlusSettings = (Button) findViewById(R.id.button_clear_pinplus_settings);
-        btnClearPinPlusSettings.setOnClickListener(new View.OnClickListener() {
+        Button btnClearCardTerminalSettings = (Button) findViewById(R.id.button_clear_card_terminal_settings);
+        btnClearCardTerminalSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SumUpAPI.clearPinPlusSettings();
+                SumUpAPI.clearCardTerminalSettings();
             }
         });
     }

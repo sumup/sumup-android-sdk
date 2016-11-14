@@ -2,6 +2,12 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 2.0.0
+* [ADDED] Support for Air and Air light terminals
+* [API CHANGE] `clearPinPlusSettings` is now deprecated and replaced by `clearCardTerminalSettings`
+* [FIXED] Makes `TransactiondInfo.Card` public
+* [IMPROVEMENT] Refresh of the login screen UI
+
 ## Version 1.61.0
 * [UPDATE] Raises targetSdkVersion to 23 - SDK will now request runtime permissions on API 23 level and up
 * [UPDATE] Uses Vector support library - It is no longer required to set `generatedDensities = []`

@@ -25,10 +25,10 @@
       android:layout_gravity="center"/>
 
     <Button
-      android:id="@+id/button_clear_pinplus_settings"
+      android:id="@+id/button_clear_card_terminal_settings"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Clear Pin+ Settings"
+      android:text="Clear Terminal Settings"
       android:layout_gravity="center"/>
 
   <ScrollView

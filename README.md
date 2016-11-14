@@ -6,12 +6,12 @@
 _NOTE: Please make sure to run 'gradle clean' after updating to version 1.53.+_
 
 ## I. Getting Started
-* Create a SumUp account and get an affiliate key <a href="https://me.sumup.com/integration-tools" target="_blank">here</a>
+* Create a SumUp account and get an affiliate key <a href="https://me.sumup.com/developers" target="_blank">here</a>
 
 ## II. Integrate the SumUp SDK with your app
 * You can use the sample app provided in this repository as a reference
 * [Changelog](https://github.com/sumup/Android-MerchantSDK/blob/master/CHANGELOG.md)
-* <a href="https://sumup.com/integration" target="_blank">Full SumUp API Documentation</a>
+* <a href="https://sumup.com/docs" target="_blank">Full SumUp API Documentation</a>
 
 ##### 1. Add the repository to your gradle dependencies
 ```groovy
@@ -26,7 +26,7 @@ allprojects {
 
 Add the dependency to a module
 ```groovy
-compile('com.sumup:merchant-sdk:1.61.0@aar') {
+compile('com.sumup:merchant-sdk:2.0.0@aar') {
         transitive = true
     }
 ```
@@ -46,9 +46,9 @@ Initialize the SumUp components in your app
 ```java
     SumUpPayment payment = SumUpPayment.builder()
             //mandatory parameters
-            // Please go to https://me.sumup.com/developers to get your Affiliate Key by entering the application ID of your app. (e.g. com.sumup.sdksampleapp)
+            // Please go to https://me.sumup.com/developers to retrieve your Affiliate Key by entering the application ID of your app. (e.g. com.sumup.sdksampleapp)
             .affiliateKey("YOUR_AFFILIATE_KEY")
-            .productAmount(1.23)
+            .productAmount(1.12)
             .currency(SumUpPayment.Currency.EUR)
             // optional: add details
             .productTitle("Taxi Ride")
@@ -101,7 +101,7 @@ Then, open the PaymentActivity with:
 
 #####1. Include a transaction identifier
 
-When setting up the SumUpPayment object, it is possible to pass an optional foreignTransactionID parameter. This identifier will be associated with the transaction and can be used to retrieve this transaction later. See [API documentation](https://sumup.com/integration#transactionReportingAPIs) for details. Please make sure that this ID is unique within the scope of the SumUp merchant account and sub-accounts. It must not be longer than 128 characters.
+When setting up the SumUpPayment object, it is possible to pass an optional foreignTransactionID parameter. This identifier will be associated with the transaction and can be used to retrieve this transaction later. See [API documentation](https://sumup.com/docs/rest-api/transactions-api) for details. Please make sure that this ID is unique within the scope of the SumUp merchant account and sub-accounts. It must not be longer than 128 characters.
 
 #####2. Log out the currently logged in SumUp account
  ```java
@@ -151,9 +151,9 @@ The response flags are provided within the Bundle that is passed back to the cal
  	int resultCode = getIntent().getExtras()getInt(SumUpAPI.Response.RESULT_CODE);
  ```
 
-#####4. Clear current PIN+ settings
+#####4. Clear current card terminal settings
  ```java
- 	SumUpAPI.clearPinPlusSettings();
+ 	SumUpAPI.clearCardTerminalSettings();
  ```
 
 #####5. Enable ProGuard
@@ -171,7 +171,7 @@ The response flags are provided within the Bundle that is passed back to the cal
 
 If users should be authenticated without typing in their user credentials (or know the credentials), but instead authenticate to the app transaparently without user input, you can aquire a token from our backend and pass it to the SDK when starting a payment.
 
-To pass the access token, call `SumUpPayment.builder().accessToken("MY_ACCESS_TOKEN")`. For information about how to obtain a token, please see the [API Documentation](https://sumup.co.uk/integration#APIAuth).
+To pass the access token, call `SumUpPayment.builder().accessToken("MY_ACCESS_TOKEN")`. For information about how to obtain a token, please see the [API Documentation](https://sumup.com/docs/oauth/).
 
 If the token is invalid, `SumUpAPI.Response.ResultCode.ERROR_INVALID_TOKEN` will be returned.
 
