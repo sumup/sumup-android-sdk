@@ -26,7 +26,7 @@ allprojects {
 
 Add the dependency to a module
 ```groovy
-compile('com.sumup:merchant-sdk:2.0.0@aar') {
+compile('com.sumup:merchant-sdk:2.0.1@aar') {
         transitive = true
     }
 ```

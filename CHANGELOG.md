@@ -2,6 +2,10 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 2.0.1
+* [ADDED] Includes the upcoming SSL certificate - Certificate included in any previous SDK version will expire Friday, 24th Feb 2017
+* [FIXED] Fixes misbehaviour in the rotation handling on the signature screen
+
 ## Version 2.0.0
 * [ADDED] Support for Air and Air light terminals
 * [API CHANGE] `clearPinPlusSettings` is now deprecated and replaced by `clearCardTerminalSettings`
