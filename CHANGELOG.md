@@ -1,6 +1,11 @@
-#Changelog
+# Changelog
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
+
+## Version 2.1.0
+* [ADDED] Makes Payment Settings accessible
+* [API CHANGE] Renames result code flag with value 1. The old name is deprecated - `TRANSACTION_SUCCESSFUL` > `SUCCESSFUL`
+* [IMPROVEMENT] Improves bluetooth discovery and connection stability
 
 ## Version 2.0.1
 * [ADDED] Includes the upcoming SSL certificate - Certificate included in any previous SDK version will expire Friday, 24th Feb 2017

@@ -9,7 +9,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
-        versionName "2.0.1"
+        versionName "2.1.0"
     }
 
     packagingOptions {
@@ -30,7 +30,7 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
 
-    compile('com.sumup:merchant-sdk:2.0.1@aar') {
+    compile('com.sumup:merchant-sdk:2.1.0@aar') {
         transitive = true
     }
 }

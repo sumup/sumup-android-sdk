@@ -8,6 +8,15 @@
   android:padding="16dp"
   android:gravity="center">
 
+
+    <Button
+      android:id="@+id/button_login"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:text="Login"
+      android:layout_gravity="center"/>
+
     <Button
       android:id="@+id/button_charge"
       android:layout_width="wrap_content"
@@ -16,19 +25,21 @@
       android:text="Charge"
       android:layout_gravity="center"/>
 
+
+    <Button
+      android:id="@+id/button_payment_settings"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:text="Payment Settings"
+      android:layout_gravity="center"/>
+
     <Button
       android:id="@+id/button_logout"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginBottom="16dp"
       android:text="Log out"
-      android:layout_gravity="center"/>
-
-    <Button
-      android:id="@+id/button_clear_card_terminal_settings"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Clear Terminal Settings"
       android:layout_gravity="center"/>
 
   <ScrollView
