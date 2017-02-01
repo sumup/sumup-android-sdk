@@ -17,5 +17,17 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+     <!-- Required for bluetooth communication with an Adyen terminal -->
+     <receiver android:name="com.adyen.adyenpos.receiver.BluetoothState">
+
+         <intent-filter>
+             <action android:name="android.bluetooth.adapter.action.STATE_CHANGED"/>
+             <action android:name="android.bluetooth.device.action.UUID"/>
+         </intent-filter>
+     </receiver>
+
+     <!-- Required for bluetooth communication with an Adyen terminal (when enableEagerConnection is used)-->
+     <service android:name="com.adyen.adyenpos.service.TerminalConnectIntentService"/>
     </application>
 </manifest>

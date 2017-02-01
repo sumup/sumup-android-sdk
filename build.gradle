@@ -14,5 +14,6 @@ allprojects {
         jcenter()
 
         maven { url 'https://maven.sumup.com/releases' }
+        maven { url 'https://maven.sumup.com/snapshots' }
     }
 }

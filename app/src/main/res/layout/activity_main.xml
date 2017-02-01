@@ -25,7 +25,6 @@
       android:text="Charge"
       android:layout_gravity="center"/>
 
-
     <Button
       android:id="@+id/button_payment_settings"
       android:layout_width="wrap_content"
