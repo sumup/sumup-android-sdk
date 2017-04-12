@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    buildToolsVersion "25.0.1"
 
     defaultConfig {
         applicationId "com.sumup.sdksampleapp"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
-        versionName "2.x.0-MIURA-SNAPSHOT"
+        versionName "2.2.0"
     }
 
     packagingOptions {
@@ -30,7 +30,7 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
 
-    compile('com.sumup:merchant-sdk:2.x.0-MIURA-SNAPSHOT@aar') {
+    compile('com.sumup:merchant-sdk:2.2.0@aar') {
         transitive = true
     }
 }

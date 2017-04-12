@@ -5,9 +5,8 @@
 
 NOTE:
 
-* This version is aimed for development purposes only and is not supposed to be used in production yet.
 * We strongly advise against having the payleven SDK and the SumUp SDK integrated simultaneously in one application due to highly probable conflicts between the underlying Adyen instances.
-* This particular SDK version is ONLY to be used by existing payleven integration partners.
+* This particular integration is ONLY to be used by existing payleven integration partners.
 * Upon migration of payleven merchant accounts to the SumUp systems, accounts and card readers will be fully operational.
 * Integrating and running the SumUP SDK does not require the SumUp Android app to be installed on your mobile device.
 
@@ -35,7 +34,6 @@ Add the repository to your gradle dependencies:
 allprojects {
    repositories {
       maven { url 'https://maven.sumup.com/releases' }
-      maven { url 'https://maven.sumup.com/snapshots' }
    }
 }
 ```
@@ -43,7 +41,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile('com.sumup:merchant-sdk:2.x.0-MIURA@aar') {
+compile('com.sumup:merchant-sdk:2.2.0@aar') {
         transitive = true
     }
 ```
