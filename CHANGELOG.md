@@ -2,6 +2,10 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 2.2.0
+* [ADDED] Supports Miura card terminals for payleven partners
+* [IMPROVEMENT] Various bugfixes and enhancements
+
 ## Version 2.1.0
 * [ADDED] Makes Payment Settings accessible
 * [API CHANGE] Renames result code flag with value 1. The old name is deprecated - `TRANSACTION_SUCCESSFUL` > `SUCCESSFUL`

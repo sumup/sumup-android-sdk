@@ -3,7 +3,7 @@
 [![Platform](https://img.shields.io/badge/Platform-Android-brightgreen.svg?style=flat-square)](http://developer.android.com/index.html)
 [![Created](https://img.shields.io/badge/Made%20by-SumUp-blue.svg?style=flat-square)]()
 [![API](https://img.shields.io/badge/API-15%2B-orange.svg?style=flat-square)](http://developer.android.com/about/versions/android-4.0.3html)
-[![Version](https://img.shields.io/badge/Version-2.1.0-yellowgreen.svg?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.2.0-yellowgreen.svg?style=flat-square)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/License-SumUp-brightgreen.svg?style=flat-square)](LICENSE)
 
 This repository provides a step by step documentation for SumUp's native Android SDK, that enables you to integrate our proprietary card terminal(s) and its payment platform to accept credit and debit card payments (incl. VISA, MasterCard, American Express and more). The SDK communicates transparently to the card terminal(s) via Bluetooth (BLE 4.0). Upon initiating a checkout, the SDK guides your user using appropriate screens through each step of the payment process. As part of the process, SumUp provides also the card terminal setup screen, along with the cardholder signature verification screen. The checkout result is returned with the relevant data for your records.
@@ -22,8 +22,7 @@ For more information about SumUp developer products, please refer to our <a href
 ## I. Integrate the SumUp SDK
 
   * You can use the sample app provided in this repository as a reference
-  * Please make sure to run 'gradle clean' after updating to version 1.53.+
-  
+
 
 ### 1. Dependency
 
@@ -41,7 +40,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile('com.sumup:merchant-sdk:2.1.0@aar') {
+compile('com.sumup:merchant-sdk:2.2.0@aar') {
         transitive = true
     }
 ```
@@ -193,7 +192,6 @@ If the token is invalid, `SumUpAPI.Response.ResultCode.ERROR_INVALID_TOKEN` will
 Please provide as much information as possible.
 
 ## Changelog
- 
  [SumUp Android SDK Changelog](https://github.com/sumup/Android-MerchantSDK/blob/master/CHANGELOG.md)
 
 ## License
