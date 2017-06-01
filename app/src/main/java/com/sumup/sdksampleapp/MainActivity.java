@@ -75,6 +75,14 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button prepareCardTerminal = (Button) findViewById(R.id.button_prepare_card_terminal);
+        prepareCardTerminal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SumUpAPI.prepareForCheckout();
+            }
+        });
+
         Button btnLogout = (Button) findViewById(R.id.button_logout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -16,12 +16,6 @@ This plugin is created by Hugo Visser and released in the [public domain](http:/
 
 ---
 
-[Android-ViewPagerIndicator](https://github.com/SourceBackups/Android-ViewPagerIndicator)
-
-[LICENCE](https://github.com/SourceBackups/Android-ViewPagerIndicator#license)
-
----
-
 [Crouton](https://github.com/keyboardsurfer/Crouton)
 
 [LICENCE](https://github.com/keyboardsurfer/Crouton/blob/master/LICENSE)

@@ -2,6 +2,12 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 2.3.0
+* [ADDED] Adds `skipSuccessScreen` to optionally skip successful result screens
+* [ADDED] Supports adding a tip before a checkout with `tipAmount`
+* [ADDED] Adds `prepareForCheckout` method to wake up your SumUp Card terminal in advance
+* [API CHANGE] `SumUpApi.openPaymentActivity(Activity activity, Class callbackActivity, SumUpPayment payment)` is deprecated. We encourage to switch to `SumUpApi.openPaymentActivity(Activity activity, SumUpPayment payment, int requestCode)` introduced in SDK 1.55.1
+
 ## Version 2.2.0
 * [ADDED] Supports Miura card terminals for payleven partners
 * [IMPROVEMENT] Various bugfixes and enhancements

@@ -25,13 +25,20 @@
       android:text="Charge"
       android:layout_gravity="center"/>
 
-
     <Button
       android:id="@+id/button_payment_settings"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginBottom="16dp"
       android:text="Payment Settings"
+      android:layout_gravity="center"/>
+
+    <Button
+      android:id="@+id/button_prepare_card_terminal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:text="Prepare Card Terminal"
       android:layout_gravity="center"/>
 
     <Button
