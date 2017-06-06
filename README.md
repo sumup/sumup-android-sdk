@@ -15,6 +15,7 @@ NOTE:
 1. Received a test account.
 2. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers.
 3. Android API 15 or later
+4. `targetSdkVersion` 24 or later (hard requirement with upcoming SDK 3.0.0)
 
 ## I. Implementation notes for migrating to the SumUp SDK
 
@@ -41,7 +42,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile('com.sumup:merchant-sdk:2.2.0@aar') {
+compile('com.sumup:merchant-sdk:2.3.0@aar') {
         transitive = true
     }
 ```
@@ -200,3 +201,10 @@ If the token is invalid, `SumUpAPI.Response.ResultCode.ERROR_INVALID_TOKEN` will
         }
     }
 ```
+
+## Out of Scope
+The following functions are handled by the [SumUp APIs](https://sumup.com/docs/oauth/):
+* [Refunds](http://docs.sumup.com/rest-api/transactions-api/#merchant-refunds)
+* [Transaction history](http://docs.sumup.com/rest-api/transactions-api/#merchant-transactions)
+* [Receipts](http://docs.sumup.com/rest-api/transactions-api/#receipts)
+* [Account management](http://docs.sumup.com/rest-api/accounts-api/)
