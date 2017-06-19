@@ -174,7 +174,7 @@ To access the payment settings, it is required to be logged in:
 ### 3. Transaction identifier
 
 When setting up the `SumUpPayment` object, it is possible to pass an optional `foreignTransactionID` parameter. This identifier will be associated with the transaction and can be used to retrieve details related to the transaction. See [API documentation](https://sumup.com/docs/rest-api/transactions-api) for details. Please make sure that this ID is unique within the scope of the SumUp merchant account and sub-accounts. It must not be longer than 128 characters.
-
+The foreignTransactionID is available when the callback activity is called: `SumUpAPI.Param.FOREIGN_TRANSACTION_ID`
 
 ### 4. Transparent authentication
 
