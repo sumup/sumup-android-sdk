@@ -169,6 +169,7 @@ A tip amount can be processed in addition to the `productAmount` using the `tipA
 
 #### Transaction identifier
 The `foreignTransactionID` identifier will be associated with the transaction and can be used to retrieve details related to the transaction. See [API documentation](https://sumup.com/docs/rest-api/transactions-api) for details. Please make sure that this ID is unique within the scope of the SumUp merchant account and sub-accounts. It must not be longer than 128 characters.
+The foreignTransactionID is available when the callback activity is called: `SumUpAPI.Param.FOREIGN_TRANSACTION_ID`
 
 #### Skip success screen
 To skip the screen shown at the end of a successful transaction, the `skipSuccessScreen` parameter can be used. When using the parameter  your application is responsible for displaying the transaction result to the customer. In combination with the Receipts API your application can also send your own receipts, see [API documentation](https://sumup.com/docs/rest-api/transactions-api) for details. Please note success screens will still be shown when using the SumUp Air Lite readers.
