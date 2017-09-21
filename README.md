@@ -38,7 +38,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile('com.sumup:merchant-sdk:2.3.0@aar') {
+compile('com.sumup:merchant-sdk:2.4.0@aar') {
         transitive = true
     }
 ```
@@ -83,7 +83,7 @@ Initialize the SumUp components in your app:
 	    .skipSuccessScreen()
             .build();
 
-    SumUpAPI.openPaymentActivity(MainActivity.this, payment, 1);
+    SumUpAPI.openPaymentActivity(MainActivity.this, payment, 2);
 ```
 
 ### 4. Handle payment result

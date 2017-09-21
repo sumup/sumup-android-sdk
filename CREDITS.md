@@ -22,12 +22,6 @@ This plugin is created by Hugo Visser and released in the [public domain](http:/
 
 ---
 
-[Dagger](https://github.com/square/dagger)
-
-[LICENCE](https://github.com/square/dagger/blob/master/LICENSE.txt)
-
----
-
 [Gson](https://github.com/google/gson/)
 
 Gson is released under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). Copyright 2008 Google Inc.
@@ -62,3 +56,8 @@ Gson is released under the [Apache License 2.0](http://www.apache.org/licenses/L
 
 SMC is dual licensed under Mozzile Public License, version 1.1 and GNU General Public License, version 2.0.
 
+---
+
+[Toothpick](https://github.com/stephanenicolas/toothpick/)
+
+[LICENCE](https://github.com/stephanenicolas/toothpick/blob/master/LICENSE)

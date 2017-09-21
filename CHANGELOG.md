@@ -2,6 +2,15 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 2.4.0
+* [FIXED] Fixes conflict with Dagger 2 - Switched from Dagger 1 to Toothpick
+* [IMPROVEMENT] Adds error code for duplicate foreign transaction id - `SumUpAPI.Response.ResultCode.ERROR_DUPLICATE_FOREIGN_TX_ID`
+* [ADDED] Adds support for Norwegian krone - `Currency.NOK`
+* [ADDED] Adds support for new european countries - `el`, `fi`, `lt`, `nb` and `sl`
+* [IMPROVEMENT] Improves bluetooth reconnection to the card terminals
+* [ADDED] Adds Bluetooth troubleshooting screen during setup
+* [IMPROVEMENT] Improves UX in the receipt screen
+
 ## Version 2.3.0
 * [ADDED] Adds `skipSuccessScreen` to optionally skip successful result screens
 * [ADDED] Supports adding a tip before a checkout with `tipAmount`
