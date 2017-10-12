@@ -2,6 +2,10 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 2.4.1
+* [ADDED] Adds support for Czech koruna and Hungarian forint - `Currency.NOK`, `Currency.HUF`
+* [ADDED] Adds support for new european countries - `cs`, `hu`, `lv`
+
 ## Version 2.4.0
 * [FIXED] Fixes conflict with Dagger 2 - Switched from Dagger 1 to Toothpick
 * [IMPROVEMENT] Adds error code for duplicate foreign transaction id - `SumUpAPI.Response.ResultCode.ERROR_DUPLICATE_FOREIGN_TX_ID`
