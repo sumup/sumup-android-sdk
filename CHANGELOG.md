@@ -2,6 +2,15 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 2.5.0
+* [IMPROVEMENT] Decoupled login from checkout - A SumUp account can be logged in independently of performing a checkout 
+* [ADDED] Adds support for Bulgarian lev, Chilean Peso, and Danish Krone - `Currency.BGN`, `Currency.CLP`, and `Currency.DKK`
+* [ADDED] Adds support for new european countries - `bg`, `da`, `sk`
+* [API CHANGE] `SumUpApi.openPaymentActivity(Activity activity, SumUpPayment payment, int requestCode)` is deprecated in favor of `SumUpApi.checkout(Activity activity, SumUpPayment payment, int requestCode)`
+* [API CHANGE] `SumUpPayment.productAmount(double) and SumUpPayment.tipAmount(double)` are deprecated in favor of `SumUpPayment.total(BigDecimal) and SumUpPayment.tip(BigDecimal)`
+* [API CHANGE] `SumUpPayment.productTitle(String)` is deprecated in favor of `SumUpPayment.title(BigDecimal)`
+* [IMPROVEMENT] Various bug fixes and enhancements around the Bluetooth scanning and connection
+
 ## Version 2.4.1
 * [ADDED] Adds support for Czech koruna and Hungarian forint - `Currency.NOK`, `Currency.HUF`
 * [ADDED] Adds support for new european countries - `cs`, `hu`, `lv`

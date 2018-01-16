@@ -7,15 +7,15 @@ This repository provides a step by step documentation for SumUp's native Android
 
 No sensitive card data is ever passed through to or stored on the merchant’s phone. All data is encrypted by the card terminal, which has been fully certified to the highest industry standards (PCI, EMV I & II, Visa, MasterCard & Amex).
 
-For more information about SumUp developer products, please refer to our <a href="https://sumup.com/docs" target="_blank"> SumUp API documentation</a>.
+For more information about SumUp developer products, please refer to our <a href="http://docs.sumup.com/" target="_blank"> SumUp API documentation</a>.
 
 
 ## Prerequisites
 1. Registered for a merchant account via SumUp's [country websites](https://sumup.com/) (or received a test account).
 2. Received SumUp card terminal: Air, Air Lite or PIN+ Terminal
 3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers.
-4. Android API 15 or later
-5. `targetSdkVersion` 24 or later (hard requirement with upcoming SDK 3.0.0)
+4. `minSdkVersion` 15 or later
+5. `targetSdkVersion` 23 or later (hard requirement with upcoming SDK 3.0.0)
 
 ## I. Integrate the SumUp SDK
 
@@ -38,7 +38,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile('com.sumup:merchant-sdk:2.4.1@aar') {
+compile('com.sumup:merchant-sdk:2.5.0@aar') {
         transitive = true
     }
 ```
@@ -59,18 +59,30 @@ Initialize the SumUp components in your app:
 	}
 ```
 
-### 3. Make a payment
+### 3. Login
+Before calling any features of the SumUp SDK, a registered SumUp merchant account needs to be logged in.
+
+```java
+SumUpLogin sumupLogin = SumUpLogin.builder(mAffiliateKey).build();
+SumUpAPI.openLoginActivity(MainActivity.this, sumupLogin, 1);
+```
+
+> Note: It is also possible to login an account with a token, without the user entering their SumUp login credentials in the SDK. Please refer to section [Transaction Authentication](#5-transparent-authentication)
+
+### 4. Make a payment
+Once logged in, you can start using the SumUp SDK to accept card payments. If no account is logged in, `SumUpAPI.Response.ResultCode.ERROR_NOT_LOGGED_IN` will be returned.
+
 ```java
     SumUpPayment payment = SumUpPayment.builder()
             // mandatory parameters
             // Please go to https://me.sumup.com/developers to retrieve your Affiliate Key by entering the application ID of your app. (e.g. com.sumup.sdksampleapp)
             .affiliateKey("YOUR_AFFILIATE_KEY")
-            .productAmount(1.12)
+            .total(new BigDecimal("1.12")) // minimum 1.00
             .currency(SumUpPayment.Currency.EUR)
-	    // optional: include a tip amount in addition to the productAmount
-	    .tipAmount(0.10)
+	    // optional: include a tip amount in addition to the total
+	    .tip(new BigDecimal("0.10"))
             // optional: add details
-            .productTitle("Taxi Ride")
+            .title("Taxi Ride")
             .receiptEmail("customer@mail.com")
             .receiptSMS("+3531234567890")
             // optional: Add metadata
@@ -83,10 +95,10 @@ Initialize the SumUp components in your app:
 	    .skipSuccessScreen()
             .build();
 
-    SumUpAPI.openPaymentActivity(MainActivity.this, payment, 2);
+    SumUpAPI.checkout(MainActivity.this, payment, 2);
 ```
 
-### 4. Handle payment result
+### 5. Handle payment result
 ```java
    @Override
    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -112,6 +124,9 @@ Several response fields are available when the callback activity is called:
     * SumUpAPI.Response.ResultCode.ERROR_NO_CONNECTIVITY = 6
     * SumUpAPI.Response.ResultCode.ERROR_PERMISSION_DENIED = 7
     * SumUpAPI.Response.ResultCode.ERROR_NOT_LOGGED_IN = 8
+    * SumUpAPI.Response.ResultCode.ERROR_DUPLICATE_FOREIGN_TX_ID = 9
+    * SumUpAPI.Response.ResultCode.ERROR_INVALID_AFFILIATE_KEY = 10
+    * SumUpAPI.Response.ResultCode.ERROR_ALREADY_LOGGED_IN = 11
 * SumUpAPI.Response.MESSAGE
   * Type: String
   * Description: A human readable message describing the result of the payment
@@ -146,14 +161,10 @@ The response flags are provided within the Bundle that is passed back to the cal
 
 ### 2. Payment settings
 
+When a merchant is logged in, you can enable them to change their payment method settings, e.g. select and pair their preferred card terminal. The preferences available to a merchant depend on the individual merchant settings.
+
 ```java
  	SumUpAPI.openPaymentSettingsActivity(MainActivity.this, 3);
- ```
-
-To access the payment settings, a registered SumUp merchant account needs to be logged in:
- ```java
- 	SumUpLogin sumUplogin = SumUpLogin.builder(mAffiliateKey).build();
- 	SumUpAPI.openLoginActivity(MainActivity.this, sumUplogin, 1);
  ```
 
 ### 3. Prepare the SumUp Card terminal in advance
@@ -165,20 +176,25 @@ Calling `prepareForCheckout()` before instancing a checkout will speed up the ch
 When setting up the `SumUpPayment` object, the following optional parameters can be included:
 
 #### Tip amount
-A tip amount can be processed in addition to the `productAmount` using the `tipAmount` parameter. The tip amount will then be shown during the checkout process and be included in the response. Please note that a tip amount cannot be changed during/after the checkout.
+A tip amount can be processed in addition to the `total` using the `tip` parameter. The tip amount will then be shown during the checkout process and be included in the response. Please note that a tip amount cannot be changed during/after the checkout.
 
 #### Transaction identifier
-The `foreignTransactionID` identifier will be associated with the transaction and can be used to retrieve details related to the transaction. See [API documentation](https://sumup.com/docs/rest-api/transactions-api) for details. Please make sure that this ID is unique within the scope of the SumUp merchant account and sub-accounts. It must not be longer than 128 characters.
+The `foreignTransactionID` identifier will be associated with the transaction and can be used to retrieve details related to the transaction. See [API documentation](http://docs.sumup.com/rest-api/transactions-api) for details. Please make sure that this ID is unique within the scope of the SumUp merchant account and sub-accounts. It must not be longer than 128 characters.
 The foreignTransactionID is available when the callback activity is called: `SumUpAPI.Param.FOREIGN_TRANSACTION_ID`
 
 #### Skip success screen
-To skip the screen shown at the end of a successful transaction, the `skipSuccessScreen` parameter can be used. When using the parameter  your application is responsible for displaying the transaction result to the customer. In combination with the Receipts API your application can also send your own receipts, see [API documentation](https://sumup.com/docs/rest-api/transactions-api) for details. Please note success screens will still be shown when using the SumUp Air Lite readers.
+To skip the screen shown at the end of a successful transaction, the `skipSuccessScreen` parameter can be used. When using the parameter  your application is responsible for displaying the transaction result to the customer. In combination with the Receipts API your application can also send your own receipts, see [API documentation](http://docs.sumup.com/rest-api/transactions-api) for details. Please note success screens will still be shown when using the SumUp Air Lite readers.
 
 ### 5. Transparent authentication
 
-If users should be authenticated without typing in their user credentials (or knowing the credentials), but instead authenticate to the app transparently without user input, you can aquire a token from our backend and pass it to the SDK when starting a payment.
+To authenticate an account without the user typing in their SumUp credentials each time, you can generate an access token using OAuth2.0 and use it to transparently login to the SumUp SDK.
 
-To pass the access token, call `SumUpPayment.builder().accessToken("MY_ACCESS_TOKEN")`. For information about how to obtain a token, please see the [API Documentation](https://sumup.com/docs/oauth/).
+```java
+SumUpLogin sumupLogin = SumUpLogin.builder(mAffiliateKey).accessToken("MY_ACCESS_TOKEN").build();
+SumUpAPI.openLoginActivity(MainActivity.this, sumupLogin, 1);
+```
+
+For information about how to obtain a token, please see the [API Documentation](http://docs.sumup.com/oauth/).
 
 If the token is invalid, `SumUpAPI.Response.ResultCode.ERROR_INVALID_TOKEN` will be returned.
 
@@ -201,7 +217,7 @@ If the token is invalid, `SumUpAPI.Response.ResultCode.ERROR_INVALID_TOKEN` will
 ```
 
 ## Out of Scope
-The following functions are handled by the [SumUp APIs](https://sumup.com/docs/oauth/):
+The following functions are handled by the [SumUp APIs](http://docs.sumup.com/oauth/):
 * [Refunds](http://docs.sumup.com/rest-api/transactions-api/#merchant-refunds)
 * [Transaction history](http://docs.sumup.com/rest-api/transactions-api/#merchant-transactions)
 * [Receipts](http://docs.sumup.com/rest-api/transactions-api/#receipts)

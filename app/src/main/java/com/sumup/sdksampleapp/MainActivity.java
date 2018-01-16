@@ -11,6 +11,7 @@ import com.sumup.merchant.api.SumUpAPI;
 import com.sumup.merchant.api.SumUpLogin;
 import com.sumup.merchant.api.SumUpPayment;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 public class MainActivity extends Activity {
@@ -36,8 +37,8 @@ public class MainActivity extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SumUpLogin sumUplogin = SumUpLogin.builder("7ca84f17-84a5-4140-8df6-6ebeed8540fc").build();
-                SumUpAPI.openLoginActivity(MainActivity.this, sumUplogin, REQUEST_CODE_LOGIN);
+                SumUpLogin sumupLogin = SumUpLogin.builder("7ca84f17-84a5-4140-8df6-6ebeed8540fc").build();
+                SumUpAPI.openLoginActivity(MainActivity.this, sumupLogin, REQUEST_CODE_LOGIN);
             }
         });
 
@@ -49,10 +50,10 @@ public class MainActivity extends Activity {
                         // mandatory parameters
                         // Please go to https://me.sumup.com/developers to get your Affiliate Key by entering the application ID of your app. (e.g. com.sumup.sdksampleapp)
                         .affiliateKey("7ca84f17-84a5-4140-8df6-6ebeed8540fc")
-                        .productAmount(1.12)
+                        .total(new BigDecimal("1.12")) // minimum 1.00
                         .currency(SumUpPayment.Currency.EUR)
                         // optional: add details
-                        .productTitle("Taxi Ride")
+                        .title("Taxi Ride")
                         .receiptEmail("customer@mail.com")
                         .receiptSMS("+3531234567890")
                         // optional: Add metadata
@@ -63,7 +64,7 @@ public class MainActivity extends Activity {
                         .foreignTransactionId(UUID.randomUUID().toString()) // can not exceed 128 chars
                         .build();
 
-                SumUpAPI.openPaymentActivity(MainActivity.this, payment, REQUEST_CODE_PAYMENT);
+                SumUpAPI.checkout(MainActivity.this, payment, REQUEST_CODE_PAYMENT);
             }
         });
 
