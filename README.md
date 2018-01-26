@@ -43,7 +43,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile('com.sumup:merchant-sdk:2.4.0@aar') {
+compile('com.sumup:merchant-sdk:2.5.1@aar') {
         transitive = true
     }
 ```
@@ -129,6 +129,8 @@ Several response fields are available when the callback activity is called:
     * SumUpAPI.Response.ResultCode.ERROR_NO_CONNECTIVITY = 6
     * SumUpAPI.Response.ResultCode.ERROR_PERMISSION_DENIED = 7
     * SumUpAPI.Response.ResultCode.ERROR_NOT_LOGGED_IN = 8
+    * SumUpAPI.Response.ResultCode.ERROR_DUPLICATE_FOREIGN_TX_ID = 9
+    * SumUpAPI.Response.ResultCode.ERROR_INVALID_AFFILIATE_KEY = 10
 * SumUpAPI.Response.MESSAGE
   * Type: String
   * Description: A human readable message describing the result of the payment
@@ -137,7 +139,7 @@ Several response fields are available when the callback activity is called:
   * Description: The transaction code associated with the payment
 * SumUpAPI.Response.TX_INFO
   * Type: Parcelable of type com.sumup.merchant.Models.TransactionInfo
-  * Description: Transaction info object containing information about this transaction. As of SDK version 1.60.0, it contains the following information:
+  * Description: Transaction info object containing information about this transaction. It contains the following information:
     - Transaction Code
     - Merchant Code
     - Amount
@@ -204,7 +206,7 @@ If the token is invalid, `SumUpAPI.Response.ResultCode.ERROR_INVALID_TOKEN` will
 ```
 
 ## Out of Scope
-The following functions are handled by the [SumUp APIs](https://sumup.com/docs/oauth/):
+The following functions are handled by the [SumUp APIs](http://docs.sumup.com/oauth/):
 * [Refunds](http://docs.sumup.com/rest-api/transactions-api/#merchant-refunds)
 * [Transaction history](http://docs.sumup.com/rest-api/transactions-api/#merchant-transactions)
 * [Receipts](http://docs.sumup.com/rest-api/transactions-api/#receipts)
