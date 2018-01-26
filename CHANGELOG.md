@@ -2,6 +2,9 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 2.5.1
+* [ADDED] Enforces TLS 1.2 for Android devices running between Android 4.4.4 and Android 4.1 - Mandatory update by May 2018 if supporting Android 4.4.4 and below
+
 ## Version 2.5.0
 * [IMPROVEMENT] Decoupled login from checkout - A SumUp account can be logged in independently of performing a checkout 
 * [ADDED] Adds support for Bulgarian lev, Chilean Peso, and Danish Krone - `Currency.BGN`, `Currency.CLP`, and `Currency.DKK`
