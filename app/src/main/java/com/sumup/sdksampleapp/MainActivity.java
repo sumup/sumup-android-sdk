@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Please go to https://me.sumup.com/developers to get your Affiliate Key by entering the application ID of your app. (e.g. com.sumup.sdksampleapp)
                 SumUpLogin sumupLogin = SumUpLogin.builder("7ca84f17-84a5-4140-8df6-6ebeed8540fc").build();
                 SumUpAPI.openLoginActivity(MainActivity.this, sumupLogin, REQUEST_CODE_LOGIN);
             }
@@ -48,8 +49,6 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 SumUpPayment payment = SumUpPayment.builder()
                         // mandatory parameters
-                        // Please go to https://me.sumup.com/developers to get your Affiliate Key by entering the application ID of your app. (e.g. com.sumup.sdksampleapp)
-                        .affiliateKey("7ca84f17-84a5-4140-8df6-6ebeed8540fc")
                         .total(new BigDecimal("1.12")) // minimum 1.00
                         .currency(SumUpPayment.Currency.EUR)
                         // optional: add details

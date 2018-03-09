@@ -38,7 +38,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile('com.sumup:merchant-sdk:2.5.1@aar') {
+compile('com.sumup:merchant-sdk:2.5.2@aar') {
         transitive = true
     }
 ```
@@ -60,7 +60,7 @@ Initialize the SumUp components in your app:
 ```
 
 ### 3. Login
-Before calling any features of the SumUp SDK, a registered SumUp merchant account needs to be logged in.
+Before calling any features of the SumUp SDK, a registered SumUp merchant account needs to be logged in. Please go to https://me.sumup.com/developers to retrieve your Affiliate Key by entering the application ID of your app. (e.g. com.sumup.sdksampleapp)
 
 ```java
 SumUpLogin sumupLogin = SumUpLogin.builder(mAffiliateKey).build();
@@ -75,8 +75,6 @@ Once logged in, you can start using the SumUp SDK to accept card payments. If no
 ```java
     SumUpPayment payment = SumUpPayment.builder()
             // mandatory parameters
-            // Please go to https://me.sumup.com/developers to retrieve your Affiliate Key by entering the application ID of your app. (e.g. com.sumup.sdksampleapp)
-            .affiliateKey("YOUR_AFFILIATE_KEY")
             .total(new BigDecimal("1.12")) // minimum 1.00
             .currency(SumUpPayment.Currency.EUR)
 	    // optional: include a tip amount in addition to the total
