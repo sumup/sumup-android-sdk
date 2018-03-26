@@ -2,6 +2,13 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 3.0.0
+* [IMPROVEMENT] Raises targetSdkVersion to API 27 - it is still possible to target API 23 and above with a Gradle ResolutionStrategy (see example in [build.gradle](https://github.com/sumup/Android-SDKSampleApp/blob/master/app/build.gradle))
+* [IMPROVEMENT] Removes unnecessary `READ_PHONE_STATE` permission 
+* [FIXED] A compilation problem highlighted in [issue 32](https://github.com/sumup/sumup-android-sdk/issues/32) - Workaround described there is no longer necessary
+* [FIXED] A crash that can occur when establishing a Bluetooth connection with the card reader 
+* [API CHANGE] Removes fields and methods deprecated in previous versions
+
 ## Version 2.5.2
 * [API CHANGE] Deprecates passing affiliateKey in SumUpPayment. Now it's only required to pass it to SumUpLogin
 * [ADDED] Adds support for new european country - `et`

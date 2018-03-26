@@ -1,7 +1,7 @@
 # SumUp mPOS SDK - Android
 
 [![Platform](https://img.shields.io/badge/Platform-Android-brightgreen.svg?style=flat-square)](http://developer.android.com/index.html)
-[![API](https://img.shields.io/badge/API-15%2B-orange.svg?style=flat-square)](https://developer.android.com/about/versions/android-4.0.3.html)
+[![API](https://img.shields.io/badge/API-16%2B-orange.svg?style=flat-square)](https://developer.android.com/about/versions/android-4.1.html)
 
 This repository provides a step by step documentation for SumUp's native Android SDK, that enables you to integrate our proprietary card terminal(s) and its payment platform to accept credit and debit card payments (incl. VISA, MasterCard, American Express and more). The SDK communicates transparently to the card terminal(s) via Bluetooth (BLE 4.0). Upon initiating a checkout, the SDK guides your user using appropriate screens through each step of the payment process. As part of the process, SumUp provides also the card terminal setup screen, along with the cardholder signature verification screen. The checkout result is returned with the relevant data for your records.
 
@@ -14,8 +14,8 @@ For more information about SumUp developer products, please refer to our <a href
 1. Registered for a merchant account via SumUp's [country websites](https://sumup.com/) (or received a test account).
 2. Received SumUp card terminal: Air, Air Lite or PIN+ Terminal
 3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers.
-4. `minSdkVersion` 15 or later
-5. `targetSdkVersion` 23 or later (hard requirement with upcoming SDK 3.0.0)
+4. `minSdkVersion` 16 or later
+5. `targetSdkVersion` 23 or later
 
 ## I. Integrate the SumUp SDK
 
@@ -38,9 +38,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile('com.sumup:merchant-sdk:2.5.2@aar') {
-        transitive = true
-    }
+compile 'com.sumup:merchant-sdk:3.0.0'
 ```
 
 
