@@ -9,13 +9,12 @@ NOTE:
 * This particular integration is ONLY to be used by existing payleven integration partners.
 * Upon migration of payleven merchant accounts to the SumUp systems, accounts and card readers will be fully operational.
 * Integrating and running the SumUP SDK does not require the SumUp Android app to be installed on your mobile device.
-
+* From SumUp SDK 3.0.0, integration with Miura card readers is **NO LONGER** supported. Miura support remains in SumUp SDK 2.5.x, and will **ONLY** receive critical updates going forward.
 
 ## Prerequisites
 1. Received a test account.
 2. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers.
 3. Android API 15 or later
-4. `targetSdkVersion` 24 or later (hard requirement with upcoming SDK 3.0.0)
 
 ## I. Implementation notes for migrating to the SumUp SDK
 
@@ -39,11 +38,10 @@ allprojects {
 }
 ```
 
-
 Add the dependency to a module:
 
 ```groovy
-compile('com.sumup:merchant-sdk:2.5.1@aar') {
+compile('com.sumup:merchant-sdk:2.5.2@aar') {
         transitive = true
     }
 ```
@@ -100,7 +98,7 @@ Add Adyen related service and receiver in your Manifest
             .foreignTransactionId(UUID.randomUUID().toString())  // can not exceed 128 chars
             .build();
 
-    SumUpAPI.openPaymentActivity(MainActivity.this, payment, 2);
+    SumUpAPI.openPaymentActivity(MainActivity.this, payment, 1);
 ```
 
 ### 4. Handle payment result
