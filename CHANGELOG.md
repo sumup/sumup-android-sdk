@@ -25,7 +25,7 @@ For more information, see the [README](https://github.com/sumup/Android-Merchant
 * [ADDED] Adds support for new european countries - `bg`, `da`, `sk`
 * [API CHANGE] `SumUpApi.openPaymentActivity(Activity activity, SumUpPayment payment, int requestCode)` is deprecated in favor of `SumUpApi.checkout(Activity activity, SumUpPayment payment, int requestCode)`
 * [API CHANGE] `SumUpPayment.productAmount(double) and SumUpPayment.tipAmount(double)` are deprecated in favor of `SumUpPayment.total(BigDecimal) and SumUpPayment.tip(BigDecimal)`
-* [API CHANGE] `SumUpPayment.productTitle(String)` is deprecated in favor of `SumUpPayment.title(BigDecimal)`
+* [API CHANGE] `SumUpPayment.productTitle(String)` is deprecated in favor of `SumUpPayment.title(String)`
 * [IMPROVEMENT] Various bug fixes and enhancements around the Bluetooth scanning and connection
 
 ## Version 2.4.1
