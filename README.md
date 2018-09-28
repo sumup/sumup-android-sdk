@@ -38,7 +38,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile 'com.sumup:merchant-sdk:3.0.0'
+compile 'com.sumup:merchant-sdk:3.1.0'
 ```
 
 
@@ -194,14 +194,25 @@ For information about how to obtain a token, please see the [API Documentation](
 
 If the token is invalid, `SumUpAPI.Response.ResultCode.ERROR_INVALID_TOKEN` will be returned.
 
+### 6. Retrieve data of the current merchant account
 
-### 6. Log out SumUp account
+If a merchant account is currently logged in, it is possible to retrieve the data for this account.
+
+```java
+	if (!SumUpAPI.isLoggedIn()) {
+		// no merchant account currently logged in
+	} else {
+		Merchant currentMerchant = SumUpAPI.getCurrentMerchant();
+	}
+```
+
+### 7. Log out SumUp account
  ```java
  	SumUpAPI.logout();
  ```
 
 
-### 7. Enable ProGuard
+### 8. Enable ProGuard
 ```grovy
    buildTypes {
         release {

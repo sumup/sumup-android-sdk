@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "27.0.2"
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         applicationId "com.sumup.sdksampleapp"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
-        versionName "3.0.0"
+        versionName "3.1.0"
     }
 
     // Possible resolution strategy. Only necessary if not compiling against API 27
@@ -40,5 +40,5 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:26.1.0'
 
-    compile 'com.sumup:merchant-sdk:3.0.0'
+    compile 'com.sumup:merchant-sdk:3.1.0'
 }

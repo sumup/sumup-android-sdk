@@ -28,21 +28,15 @@ Gson is released under the [Apache License 2.0](http://www.apache.org/licenses/L
 
 ---
 
-[HockeySDK-Android](https://github.com/bitstadium/HockeySDK-Android)
-
-[LICENCE](https://github.com/bitstadium/HockeySDK-Android/blob/develop/LICENSE)
-
----
-
 [OkHttp](https://github.com/square/okhttp)
 
 [LICENCE](https://github.com/square/okhttp/blob/master/LICENSE.txt)
 
 ---
 
-[Otto](https://github.com/square/otto)
+[EventBus](https://github.com/greenrobot/EventBus)
 
-[LICENCE](https://github.com/square/otto/blob/master/LICENSE.txt)
+[LICENCE](https://github.com/greenrobot/EventBus/blob/master/LICENSE)
 
 ---
 

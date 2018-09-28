@@ -18,6 +18,13 @@
       android:layout_gravity="center"/>
 
     <Button
+      android:id="@+id/button_log_merchant"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:text="Show Logged In Merchant"/>
+
+    <Button
       android:id="@+id/button_charge"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

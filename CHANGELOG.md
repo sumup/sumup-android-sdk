@@ -2,6 +2,16 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 3.1.0
+* [Added] Adds `getCurrentMerchant` method to retrieve the data of the current logged in merchant account
+* [Added] Adds `isLoggedIn` method to retrieve if an account is currently logged in
+* [IMPROVEMENT] Switch from otto to greenrobot EventBus
+* [IMPROVEMENT] Avoid dead thread warning when closing bluetooth connection
+* [FIXED] Handles "NOT_ALLOWED" error code correctly (issue highlighted in [issue 57](https://github.com/sumup/sumup-android-sdk/issues/57))
+* [FIXED] A crash that can occur when back button is pressed while connecting to the card reader
+* [FIXED] A crash that can occur when calling Payment Settings while connection to the card reader is ongoing
+* [FIXED] A crash that can occur when the host app for the SDK is brought to the background while a transaction is ongoing
+
 ## Version 3.0.0
 * [IMPROVEMENT] Raises targetSdkVersion to API 27 - it is still possible to target API 23 and above with a Gradle ResolutionStrategy (see example in [build.gradle](https://github.com/sumup/Android-SDKSampleApp/blob/master/app/build.gradle))
 * [IMPROVEMENT] Removes unnecessary `READ_PHONE_STATE` permission 
@@ -25,7 +35,7 @@ For more information, see the [README](https://github.com/sumup/Android-Merchant
 * [ADDED] Adds support for new european countries - `bg`, `da`, `sk`
 * [API CHANGE] `SumUpApi.openPaymentActivity(Activity activity, SumUpPayment payment, int requestCode)` is deprecated in favor of `SumUpApi.checkout(Activity activity, SumUpPayment payment, int requestCode)`
 * [API CHANGE] `SumUpPayment.productAmount(double) and SumUpPayment.tipAmount(double)` are deprecated in favor of `SumUpPayment.total(BigDecimal) and SumUpPayment.tip(BigDecimal)`
-* [API CHANGE] `SumUpPayment.productTitle(String)` is deprecated in favor of `SumUpPayment.title(BigDecimal)`
+* [API CHANGE] `SumUpPayment.productTitle(String)` is deprecated in favor of `SumUpPayment.title(String)`
 * [IMPROVEMENT] Various bug fixes and enhancements around the Bluetooth scanning and connection
 
 ## Version 2.4.1

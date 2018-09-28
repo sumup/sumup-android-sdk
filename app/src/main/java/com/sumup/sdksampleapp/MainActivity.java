@@ -43,6 +43,22 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button logMerchant = (Button) findViewById(R.id.button_log_merchant);
+        logMerchant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!SumUpAPI.isLoggedIn()) {
+                    mResultCode.setText("Result code: " + SumUpAPI.Response.ResultCode.ERROR_NOT_LOGGED_IN);
+                    mResultMessage.setText("Message: Not logged in");
+                } else {
+                    mResultCode.setText("Result code: " + SumUpAPI.Response.ResultCode.SUCCESSFUL);
+                    mResultMessage.setText(
+                            String.format("Currency: %s, Merchant Code: %s", SumUpAPI.getCurrentMerchant().getCurrency().getIsoCode(),
+                                    SumUpAPI.getCurrentMerchant().getMerchantCode()));
+                }
+            }
+        });
+
         Button btnCharge = (Button) findViewById(R.id.button_charge);
         btnCharge.setOnClickListener(new View.OnClickListener() {
             @Override
