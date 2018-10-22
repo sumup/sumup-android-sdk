@@ -9,7 +9,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
-        versionName "3.1.0"
+        versionName "3.1.1"
     }
 
     // Possible resolution strategy. Only necessary if not compiling against API 27
@@ -40,5 +40,5 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:26.1.0'
 
-    compile 'com.sumup:merchant-sdk:3.1.0'
+    compile 'com.sumup:merchant-sdk:3.1.1'
 }

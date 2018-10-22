@@ -15,7 +15,7 @@ For more information about SumUp developer products, please refer to our <a href
 2. Received SumUp card terminal: Air, Air Lite or PIN+ Terminal
 3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers.
 4. `minSdkVersion` 16 or later
-5. `targetSdkVersion` 23 or later
+5. `targetSdkVersion` 24 or later (together with Support Library 24.2.0 or later)
 
 ## I. Integrate the SumUp SDK
 
@@ -38,7 +38,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile 'com.sumup:merchant-sdk:3.1.0'
+compile 'com.sumup:merchant-sdk:3.1.1'
 ```
 
 

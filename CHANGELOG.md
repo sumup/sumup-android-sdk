@@ -2,6 +2,9 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 3.1.1
+* [FIXED] Minimum required targetSdkVersion - set to API 24 from 3.0.0
+
 ## Version 3.1.0
 * [Added] Adds `getCurrentMerchant` method to retrieve the data of the current logged in merchant account
 * [Added] Adds `isLoggedIn` method to retrieve if an account is currently logged in
@@ -13,7 +16,7 @@ For more information, see the [README](https://github.com/sumup/Android-Merchant
 * [FIXED] A crash that can occur when the host app for the SDK is brought to the background while a transaction is ongoing
 
 ## Version 3.0.0
-* [IMPROVEMENT] Raises targetSdkVersion to API 27 - it is still possible to target API 23 and above with a Gradle ResolutionStrategy (see example in [build.gradle](https://github.com/sumup/Android-SDKSampleApp/blob/master/app/build.gradle))
+* [IMPROVEMENT] Raises targetSdkVersion to API 27 - it is still possible to target API 24 and above with a Gradle ResolutionStrategy (see example in [build.gradle](https://github.com/sumup/Android-SDKSampleApp/blob/master/app/build.gradle))
 * [IMPROVEMENT] Removes unnecessary `READ_PHONE_STATE` permission 
 * [FIXED] A compilation problem highlighted in [issue 32](https://github.com/sumup/sumup-android-sdk/issues/32) - Workaround described there is no longer necessary
 * [FIXED] A crash that can occur when establishing a Bluetooth connection with the card reader 
