@@ -2,6 +2,9 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 3.1.2
+* [FIXED] A crash that can occur when pressing "Back" button in the success screen
+
 ## Version 3.1.1
 * [FIXED] Minimum required targetSdkVersion - set to API 24 from 3.0.0
 
