@@ -2,6 +2,17 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 3.2.0
+* [IMPROVEMENT] New styles for SumUp UI screens
+* [IMPROVEMENT] Adds Google Location Service library support. See [README](https://github.com/sumup/sumup-android-sdk/blob/master/README.md#9-use-google-location-services) for required changes 
+* [IMPROVEMENT] Minor bug fixes and enhancements on the Bluetooth scanning and connection
+* [IMPROVEMENT] Adjust back button behavior during ongoing transaction [67](https://github.com/sumup/sumup-android-sdk/issues/67)
+* [ADDED] Adds support for the SumUp 3G reader
+* [FIXED] Fix support for 64 bits to align with the Play Store requirements [80](https://github.com/sumup/sumup-android-sdk/issues/80) [81](https://github.com/sumup/sumup-android-sdk/issues/81)
+* [FIXED] Missing index parameter to string [issue 61](https://github.com/sumup/sumup-android-sdk/issues/61)
+* [UPCOMING] SDK 3.3.0 will migrate to AndroidX. See [README](https://github.com/sumup/sumup-android-sdk/blob/master/README.md#prerequisites) for more info
+* [UPCOMING] SDK 3.3.0 will raise targetSdkVersion to 26. See [README](https://github.com/sumup/sumup-android-sdk/blob/master/README.md#prerequisites)
+
 ## Version 3.1.2
 * [FIXED] A crash that can occur when pressing "Back" button in the success screen
 

@@ -16,6 +16,8 @@ For more information about SumUp developer products, please refer to our <a href
 3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers.
 4. `minSdkVersion` 16 or later
 5. `targetSdkVersion` 24 or later (together with Support Library 24.2.0 or later)
+> SDK 3.3.0 will raise `targetSdkVersion` to 26.
+6. Following Google's best practices SDK 3.3.0 will migrate to AndroidX. For more information about AndroidX and how to migrate see [Google AndroidX Documentation](https://developer.android.com/jetpack/androidx)
 
 ## I. Integrate the SumUp SDK
 
@@ -38,7 +40,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile 'com.sumup:merchant-sdk:3.1.2'
+compile 'com.sumup:merchant-sdk:3.2.0'
 ```
 
 
@@ -213,7 +215,7 @@ If a merchant account is currently logged in, it is possible to retrieve the dat
 
 
 ### 8. Enable ProGuard
-```grovy
+```groovy
    buildTypes {
         release {
             // All ProGuard rules required by the SumUp SDK are packaged with the library
@@ -222,6 +224,20 @@ If a merchant account is currently logged in, it is possible to retrieve the dat
         }
     }
 ```
+
+
+### 9. Use Google Location Services
+       
+The SDK supports Google Location Services, to improve location accuracy and reduce power consumption.
+
+In order to use it you need to add the dependency in build.gradle file 
+```groovy
+implementation "com.google.android.gms:play-services-location:16.0.0"
+```
+       
+If the GLS dependency is not added to the project or Google Play Services are not installed on the device the SDK will determine the location with the default Location Service.
+       
+> IMPORTANT: Google Location Services can only be used with Support Library 25.1.0 or above
 
 ## Out of Scope
 The following functions are handled by the [SumUp APIs](http://docs.sumup.com/oauth/):
