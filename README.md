@@ -16,7 +16,7 @@ For more information about SumUp developer products, please refer to our <a href
 3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers.
 4. `minSdkVersion` 16 or later
 5. `targetSdkVersion` 24 or later (together with Support Library 24.2.0 or later)
-> SDK 3.3.0 will raise `targetSdkVersion` to 26.
+> SDK 3.3.0 will raise `targetSdkVersion` to 28. (as a consequence of the migration to AndroidX) (see point below)
 6. Following Google's best practices SDK 3.3.0 will migrate to AndroidX. For more information about AndroidX and how to migrate see [Google AndroidX Documentation](https://developer.android.com/jetpack/androidx)
 
 ## I. Integrate the SumUp SDK
