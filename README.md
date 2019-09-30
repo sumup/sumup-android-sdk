@@ -40,7 +40,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile 'com.sumup:merchant-sdk:3.2.0'
+compile 'com.sumup:merchant-sdk:3.2.1'
 ```
 
 
@@ -177,11 +177,11 @@ When setting up the `SumUpPayment` object, the following optional parameters can
 A tip amount can be processed in addition to the `total` using the `tip` parameter. The tip amount will then be shown during the checkout process and be included in the response. Please note that a tip amount cannot be changed during/after the checkout.
 
 #### Transaction identifier
-The `foreignTransactionID` identifier will be associated with the transaction and can be used to retrieve details related to the transaction. See [API documentation](http://docs.sumup.com/rest-api/transactions-api) for details. Please make sure that this ID is unique within the scope of the SumUp merchant account and sub-accounts. It must not be longer than 128 characters.
+The `foreignTransactionID` identifier will be associated with the transaction and can be used to retrieve details related to the transaction. See [API documentation](https://developer.sumup.com/rest-api/#tag/Transactions) for details. Please make sure that this ID is unique within the scope of the SumUp merchant account and sub-accounts. It must not be longer than 128 characters.
 The foreignTransactionID is available when the callback activity is called: `SumUpAPI.Param.FOREIGN_TRANSACTION_ID`
 
 #### Skip success screen
-To skip the screen shown at the end of a successful transaction, the `skipSuccessScreen` parameter can be used. When using the parameter  your application is responsible for displaying the transaction result to the customer. In combination with the Receipts API your application can also send your own receipts, see [API documentation](http://docs.sumup.com/rest-api/transactions-api) for details. Please note success screens will still be shown when using the SumUp Air Lite readers.
+To skip the screen shown at the end of a successful transaction, the `skipSuccessScreen` parameter can be used. When using the parameter  your application is responsible for displaying the transaction result to the customer. In combination with the Receipts API your application can also send your own receipts, see [API documentation](https://developer.sumup.com/rest-api/#tag/Receipts) for details. Please note success screens will still be shown when using the SumUp Air Lite readers.
 
 ### 5. Transparent authentication
 
@@ -192,7 +192,7 @@ SumUpLogin sumupLogin = SumUpLogin.builder(mAffiliateKey).accessToken("MY_ACCESS
 SumUpAPI.openLoginActivity(MainActivity.this, sumupLogin, 1);
 ```
 
-For information about how to obtain a token, please see the [API Documentation](http://docs.sumup.com/oauth/).
+For information about how to obtain a token, please see the [API Documentation](https://developer.sumup.com/docs/authorization).
 
 If the token is invalid, `SumUpAPI.Response.ResultCode.ERROR_INVALID_TOKEN` will be returned.
 
@@ -240,11 +240,12 @@ If the GLS dependency is not added to the project or Google Play Services are no
 > IMPORTANT: Google Location Services can only be used with Support Library 25.1.0 or above
 
 ## Out of Scope
-The following functions are handled by the [SumUp APIs](http://docs.sumup.com/oauth/):
-* [Refunds](http://docs.sumup.com/rest-api/transactions-api/#merchant-refunds)
-* [Transaction history](http://docs.sumup.com/rest-api/transactions-api/#merchant-transactions)
-* [Receipts](http://docs.sumup.com/rest-api/transactions-api/#receipts)
-* [Account management](http://docs.sumup.com/rest-api/accounts-api/)
+The following functions are handled by the [SumUp APIs](https://developer.sumup.com/docs/authorization#authorization-scopes):
+* [Refunds](https://developer.sumup.com/docs/authorization#restricted-scopes)
+* [Transaction history](https://developer.sumup.com/docs/authorization#optional-scopes)
+* [Receipts](https://developer.sumup.com/docs/authorization#optional-scopes)
+* [Account management](https://developer.sumup.com/docs/authorization#optional-scopes)
+* [Payments](https://developer.sumup.com/docs/authorization#restricted-scopes)
 
 ## Community
 - **Questions?** Get in contact with our integration team by sending an email to

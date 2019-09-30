@@ -2,6 +2,9 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 3.2.1
+* [IMPROVEMENT] Security improvements
+
 ## Version 3.2.0
 * [IMPROVEMENT] New styles for SumUp UI screens
 * [IMPROVEMENT] Adds Google Location Service library support. See [README](https://github.com/sumup/sumup-android-sdk/blob/master/README.md#9-use-google-location-services) for required changes 
