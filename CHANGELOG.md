@@ -2,6 +2,9 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 3.2.2
+* [IMPROVEMENT] Security improvements
+
 ## Version 3.2.1
 * [IMPROVEMENT] Security improvements
 
