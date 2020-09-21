@@ -2,6 +2,22 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 3.3.0
+* [CHANGED] The SumUp SDK is migrated to AndroidX. Please make sure to [migrate your project to AndroidX](https://developer.android.com/jetpack/androidx/migrate) before including SumUp SDK 3.3.0 and future SDK versions.
+* [CHANGED] Package requires minor edit.
+ `com.sumup.merchant` becomes `com.sumup.merchant.reader` - e.g. 
+   * `com.sumup.merchant.api.SumUpAPI` > `com.sumup.merchant.reader.api.SumUpAPI`
+   * `com.sumup.merchant.models.TransactionInfo` > `com.sumup.merchant.reader.models.TransactionInfo`
+
+   Please note, this applies to ALL REFERENCES in the package.
+* [CHANGED] SumUp ‘Payments Link’ (formerly Mobile Payments/SMS) product has been removed from the SDK.  Should you wish to still use Payments Links in your integration, please get in touch [here](https://developer.sumup.com/help/#tech-question)
+* [ADDED] Introduction of in-app Bluetooth troubleshooting guide for Air Card Reader
+* [IMPROVEMENT] Enhanced UI for reader selection during selection & setup
+* [IMPROVEMENT] The SDK is now 15% lighter with footprint of approximately 4M
+* [FIXED] Fixed screen rotation issue in landscape mode for Tablets running Android 7.0 and above
+* [FIXED] Remove permissions which became obsolete (e.g. `GET_ACCOUNTS` , `READ_GSERVICES`, `RECORD_AUDIO`, `NFC`)
+* [FIXED] Add `sumup_` prefixes to resources ([issue #96](https://github.com/sumup/sumup-android-sdk/issues/96))
+
 ## Version 3.2.2
 * [IMPROVEMENT] Security improvements
 

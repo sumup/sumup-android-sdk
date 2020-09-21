@@ -16,12 +16,6 @@ This plugin is created by Hugo Visser and released in the [public domain](http:/
 
 ---
 
-[Crouton](https://github.com/keyboardsurfer/Crouton)
-
-[LICENCE](https://github.com/keyboardsurfer/Crouton/blob/master/LICENSE)
-
----
-
 [Gson](https://github.com/google/gson/)
 
 Gson is released under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). Copyright 2008 Google Inc.
@@ -37,12 +31,6 @@ Gson is released under the [Apache License 2.0](http://www.apache.org/licenses/L
 [EventBus](https://github.com/greenrobot/EventBus)
 
 [LICENCE](https://github.com/greenrobot/EventBus/blob/master/LICENSE)
-
----
-
-[PdCore](https://github.com/libpd/pd-for-android/tree/master/PdCore)
-
-[LICENCE](https://github.com/libpd/pd-for-android/blob/master/PdCore/LICENSE.txt)
 
 ---
 

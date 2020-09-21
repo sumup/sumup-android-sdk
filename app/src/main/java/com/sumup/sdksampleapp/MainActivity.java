@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.sumup.merchant.Models.TransactionInfo;
-import com.sumup.merchant.api.SumUpAPI;
-import com.sumup.merchant.api.SumUpLogin;
-import com.sumup.merchant.api.SumUpPayment;
+import com.sumup.merchant.reader.models.TransactionInfo;
+import com.sumup.merchant.reader.api.SumUpAPI;
+import com.sumup.merchant.reader.api.SumUpLogin;
+import com.sumup.merchant.reader.api.SumUpPayment;
 
 import java.math.BigDecimal;
 import java.util.UUID;
