@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import com.sumup.android.logging.Log;
 import com.sumup.merchant.reader.models.TransactionInfo;
 import com.sumup.merchant.reader.api.SumUpAPI;
 import com.sumup.merchant.reader.api.SumUpLogin;
@@ -116,6 +117,33 @@ public class MainActivity extends Activity {
             case REQUEST_CODE_LOGIN:
                 if (data != null) {
                     Bundle extra = data.getExtras();
+
+                    if (extra.getInt(SumUpAPI.Response.RESULT_CODE)
+                            == SumUpAPI.Response.ResultCode.SUCCESSFUL) {
+
+                        Log.i("Login successful. Can proceed with checkout.");
+
+                        // do checkout
+                        SumUpPayment payment = SumUpPayment.builder()
+                                // mandatory parameters
+                                .total(new BigDecimal("1.12")) // minimum 1.00
+                                .currency(SumUpPayment.Currency.EUR)
+                                // optional: add details
+                                .title("Taxi Ride")
+                                .receiptEmail("customer@mail.com")
+                                .receiptSMS("+3531234567890")
+                                // optional: Add metadata
+                                .addAdditionalInfo("AccountId", "taxi0334")
+                                .addAdditionalInfo("From", "Paris")
+                                .addAdditionalInfo("To", "Berlin")
+                                // optional: foreign transaction ID, must be unique!
+                                .foreignTransactionId(UUID.randomUUID().toString()) // can not exceed 128 chars
+                                .build();
+
+                        SumUpAPI.checkout(MainActivity.this, payment, REQUEST_CODE_PAYMENT);
+                        return;
+                    }
+
                     mResultCode.setText("Result code: " + extra.getInt(SumUpAPI.Response.RESULT_CODE));
                     mResultMessage.setText("Message: " + extra.getString(SumUpAPI.Response.MESSAGE));
                 }
@@ -124,6 +152,15 @@ public class MainActivity extends Activity {
             case REQUEST_CODE_PAYMENT:
                 if (data != null) {
                     Bundle extra = data.getExtras();
+
+                    if (extra.getInt(SumUpAPI.Response.RESULT_CODE)
+                            == SumUpAPI.Response.ResultCode.ERROR_NOT_LOGGED_IN) {
+
+                        Log.i("No user logged in. Redirecting to login.");
+                        SumUpLogin sumupLogin = SumUpLogin.builder("7ca84f17-84a5-4140-8df6-6ebeed8540fc").build();
+                        SumUpAPI.openLoginActivity(MainActivity.this, sumupLogin, REQUEST_CODE_LOGIN);
+                        return;
+                    }
 
                     mResultCode.setText("Result code: " + extra.getInt(SumUpAPI.Response.RESULT_CODE));
                     mResultMessage.setText("Message: " + extra.getString(SumUpAPI.Response.MESSAGE));
