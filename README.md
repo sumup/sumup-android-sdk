@@ -238,12 +238,12 @@ If the GLS dependency is not added to the project or Google Play Services are no
 > NOTE: Using GLS version 17.0.0 is recommended.
 
 ## Out of Scope
-The following functions are handled by the [SumUp APIs](https://developer.sumup.com/docs/authorization#authorization-scopes):
-* [Refunds](https://developer.sumup.com/docs/authorization#restricted-scopes)
-* [Transaction history](https://developer.sumup.com/docs/authorization#optional-scopes)
-* [Receipts](https://developer.sumup.com/docs/authorization#optional-scopes)
-* [Account management](https://developer.sumup.com/docs/authorization#optional-scopes)
-* [Payments](https://developer.sumup.com/docs/authorization#restricted-scopes)
+The following functions are handled by the [SumUp APIs](http://docs.sumup.com/rest-api/):
+* [Refunds](https://docs.sumup.com/rest-api/#tag/Refunds)
+* [Transaction history](https://docs.sumup.com/rest-api/#tag/Transactions)
+* [Receipts](https://docs.sumup.com/rest-api/#tag/Receipts)
+* [Account management](https://docs.sumup.com/rest-api/#tag/Account-Details)
+* [Online Payments](https://developer.sumup.com/docs/getting-started/#api-overview)
 
 ## Community
 - **Questions?** Get in contact with our integration team by sending an email to
