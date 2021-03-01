@@ -2,6 +2,18 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 3.3.1
+* [ADDED] Support for Brazilian Pin+ Cless Card Reader
+* [ADDED] On top of establishing the Bluetooth connection via the “Connect” button, it is now also possible to do it by tapping on the card reader image 
+* [IMPROVEMENT] Refreshed SumUp Brand Design Language for color and typography
+* [FIXED] “Forgot password” button was broken in the previous release and is now clickable
+* [FIXED] A crash that can occur when updating the firmware of the Card Reader
+* [IMPROVEMENT] Update technical stack:
+   * Raises targetSdkVersion to API 29 - it is still possible to target API 28
+   * Updates the Android Gradle Plugin to version 4.4.1
+   * Introduces Kotlin - Version 1.3.10 and above is needed
+* [IMPROVEMENT] Miscellaneous bug fixes and enhancements
+
 ## Version 3.3.0
 * [CHANGED] The SumUp SDK is migrated to AndroidX. Please make sure to [migrate your project to AndroidX](https://developer.android.com/jetpack/androidx/migrate) before including SumUp SDK 3.3.0 and future SDK versions.
 * [CHANGED] Package requires minor edit.

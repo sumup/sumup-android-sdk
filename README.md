@@ -16,6 +16,8 @@ For more information about SumUp developer products, please refer to our <a href
 3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers.
 4. `minSdkVersion` 16 or later
 5. Project [migrated to AndroidX](https://developer.android.com/jetpack/androidx/migrate)
+6. Android Gradle plugin 3.3.0 or later
+7. Kotlin 1.3.10 or later
 
 ## I. Integrate the SumUp SDK
 
@@ -38,7 +40,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-compile 'com.sumup:merchant-sdk:3.3.0'
+implementation 'com.sumup:merchant-sdk:3.3.1'
 ```
 
 
