@@ -43,3 +43,21 @@ SMC is dual licensed under Mozzile Public License, version 1.1 and GNU General P
 [Toothpick](https://github.com/stephanenicolas/toothpick/)
 
 [LICENCE](https://github.com/stephanenicolas/toothpick/blob/master/LICENSE)
+
+---
+
+[Kotlin](https://github.com/JetBrains/kotlin)
+
+[LICENSE](https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt)
+
+---
+
+[Moshi](https://github.com/square/moshi)
+
+[LICENSE](https://github.com/square/moshi/blob/master/LICENSE.txt)
+
+---
+
+[Threetenbp](https://github.com/ThreeTen/threetenbp)
+
+[LICENSE](https://github.com/ThreeTen/threetenbp/blob/master/LICENSE.txt)

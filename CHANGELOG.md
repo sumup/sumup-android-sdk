@@ -2,6 +2,17 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 3.3.2
+* [IMPROVEMENT] Refreshed SumUp Brand Design Language for the buttons and landscape mode
+* [FIXED] A crash that occurred when the integrator App was killed by Android System while being in the background
+* [FIXED] A misbehavior causing the SumUp SDK to remain in a loading state when it is brought back from the background during payment processing.
+* [IMPROVEMENT] Updates about technical stack:
+    * Introduces Constraint layout - version 1.1.0 and above is supported
+    * Introduces Moshi - version 1.6.0 and above supported
+    * Introduces Coroutines - version 1.3.3 and above supported
+    * Upgraded to Proguard 6.2.2
+* [IMPROVEMENT] Miscellaneous bug fixes and enhancements
+
 ## Version 3.3.1
 * [ADDED] Support for Brazilian Pin+ Cless Card Reader
 * [ADDED] On top of establishing the Bluetooth connection via the “Connect” button, it is now also possible to do it by tapping on the card reader image 
