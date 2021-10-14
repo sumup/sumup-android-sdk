@@ -11,13 +11,16 @@ For more information about SumUp developer products, please refer to our <a href
 
 
 ## Prerequisites
-1. Registered for a merchant account via SumUp's [country websites](https://sumup.com/) (or received a test account).
+1. Registered for a merchant account via SumUp's [country websites](https://sumup.com/) (or received a test account)
 2. Received SumUp card terminal: Air, Air Lite or PIN+ Terminal
-3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers.
-4. `minSdkVersion` 16 or later
+3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers
+4. SumUp SDK requires `minSdkVersion` 16 or later
+    * To keep up with the latest updates and ensuring forward compatibility, the next SumUp SDK version will drop the support for Android 5(API 22) and below
 5. Project [migrated to AndroidX](https://developer.android.com/jetpack/androidx/migrate)
 6. Android Gradle plugin 3.3.0 or later
 7. If using Kotlin, version 1.3.10 or later
+8. When using API 30 and above, it is now necessary to [add queries in your AndroidManifest.xml](#9-manifest-parameters) to keep seeing contact picker on the success screen
+9. Next SDK version will update the Java compatibility to Java 8
 
 ## I. Integrate the SumUp SDK
 
@@ -40,7 +43,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-implementation 'com.sumup:merchant-sdk:3.3.2'
+implementation 'com.sumup:merchant-sdk:3.4.0'
 ```
 
 
@@ -91,6 +94,8 @@ Once logged in, you can start using the SumUp SDK to accept card payments. If no
             .foreignTransactionId(UUID.randomUUID().toString())  // can not exceed 128 chars
 	    // optional: skip the success screen
 	    .skipSuccessScreen()
+	    // optional: skip the failed screen
+            .skipFailedScreen()
             .build();
 
     SumUpAPI.checkout(MainActivity.this, payment, 2);
@@ -125,6 +130,7 @@ Several response fields are available when the callback activity is called:
     * SumUpAPI.Response.ResultCode.ERROR_DUPLICATE_FOREIGN_TX_ID = 9
     * SumUpAPI.Response.ResultCode.ERROR_INVALID_AFFILIATE_KEY = 10
     * SumUpAPI.Response.ResultCode.ERROR_ALREADY_LOGGED_IN = 11
+    * SumUpAPI.Response.ResultCode.ERROR_INVALID_AMOUNT_DECIMALS = 12
 * SumUpAPI.Response.MESSAGE
   * Type: String
   * Description: A human readable message describing the result of the payment
@@ -181,7 +187,10 @@ The `foreignTransactionID` identifier will be associated with the transaction an
 The foreignTransactionID is available when the callback activity is called: `SumUpAPI.Param.FOREIGN_TRANSACTION_ID`
 
 #### Skip success screen
-To skip the screen shown at the end of a successful transaction, the `skipSuccessScreen` parameter can be used. When using the parameter  your application is responsible for displaying the transaction result to the customer. In combination with the Receipts API your application can also send your own receipts, see [API documentation](https://developer.sumup.com/rest-api/#tag/Receipts) for details. Please note success screens will still be shown when using the SumUp Air Lite readers.
+To skip the success screen shown at the end of a successful transaction, the `skipSuccessScreen` parameter can be used. When using this parameter  your application is responsible for displaying the transaction result to the customer. In combination with the Receipts API your application can also send your own receipts, see [API documentation](https://developer.sumup.com/rest-api/#tag/Receipts) for details. Please note success screens will still be shown when using the SumUp Air Lite readers.
+
+#### Skip failed screen
+To skip the failed screen shown at the end of a failed transaction, the `skipFailedScreen` parameter can be used. When using this parameter  your application is responsible for displaying the transaction result to the customer. Please note failed screens will still be shown when using the SumUp Air Lite readers.
 
 ### 5. Transparent authentication
 
@@ -225,8 +234,19 @@ If a merchant account is currently logged in, it is possible to retrieve the dat
     }
 ```
 
+### 9. Manifest Parameters
 
-### 9. Use Google Location Services
+When using API 30 or above, it is now necessary to add queries in your AndroidManifest.xml for contact picker on the success screen
+```xml
+<queries>
+   <intent>
+      <action android:name="android.intent.action.PICK" />
+      <data android:mimeType="vnd.android.cursor.dir/email_v2" />
+   </intent>
+</queries>
+```
+
+### 10. Use Google Location Services
        
 The SDK supports Google Location Services, to improve location accuracy and reduce power consumption.
 

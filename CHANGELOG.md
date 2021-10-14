@@ -2,6 +2,19 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 3.4.0
+* [ADDED] Ability to skip the transaction failed screen by calling `skipFailedScreen()`
+* [ADDED] Support for Colombian Peso and Croatian Kuna currencies - `SumUpPayment.Currency.COP`, `SumUpPayment.Currency.HRK`
+* [ADDED] Spanish translations for US Merchants `es-US`
+* [ADDED] Dedicated error code for handling invalid decimal values for currencies - `SumUpAPI.Response.ResultCode.ERROR_INVALID_AMOUNT_DECIMALS`
+* [FIXED] Unable to select a customer contact on Successful transaction on the devices from Android 10 (API 29)
+* [IMPROVEMENT] Updates about technical stack
+    * Minimum Material component is upgraded to 1.2.0
+    * Minimum AppCompat is upgraded to 1.2.0
+* [IMPROVEMENT] Miscellaneous bug fixes and enhancements
+* [UPCOMING] Dropping the support for Android 5 (API 22) and below.
+* [UPCOMING] Next SDK version will require Java 8
+
 ## Version 3.3.2
 * [IMPROVEMENT] Refreshed SumUp Brand Design Language for the buttons and landscape mode
 * [FIXED] A crash that occurred when the integrator App was killed by Android System while being in the background
