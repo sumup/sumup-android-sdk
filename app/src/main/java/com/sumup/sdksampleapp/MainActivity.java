@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
 
     private static final int REQUEST_CODE_LOGIN = 1;
     private static final int REQUEST_CODE_PAYMENT = 2;
-    private static final int REQUEST_CODE_PAYMENT_SETTINGS = 3;
+    private static final int REQUEST_CODE_CARD_READER_PAGE = 4;
 
     private TextView mResultCode;
     private TextView mResultMessage;
@@ -83,11 +83,11 @@ public class MainActivity extends Activity {
             }
         });
 
-        Button paymentSettings = (Button) findViewById(R.id.button_payment_settings);
-        paymentSettings.setOnClickListener(new View.OnClickListener() {
+        Button cardReaderPage = (Button) findViewById(R.id.button_card_reader_page);
+        cardReaderPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SumUpAPI.openPaymentSettingsActivity(MainActivity.this, REQUEST_CODE_PAYMENT_SETTINGS);
+                SumUpAPI.openCardReaderPage(MainActivity.this, REQUEST_CODE_CARD_READER_PAGE);
             }
         });
 
@@ -114,11 +114,8 @@ public class MainActivity extends Activity {
 
         switch (requestCode) {
             case REQUEST_CODE_LOGIN:
-                if (data != null) {
-                    Bundle extra = data.getExtras();
-                    mResultCode.setText("Result code: " + extra.getInt(SumUpAPI.Response.RESULT_CODE));
-                    mResultMessage.setText("Message: " + extra.getString(SumUpAPI.Response.MESSAGE));
-                }
+            case REQUEST_CODE_CARD_READER_PAGE:
+                setResultCodeAndMessage(data);
                 break;
 
             case REQUEST_CODE_PAYMENT:
@@ -139,16 +136,16 @@ public class MainActivity extends Activity {
                 }
                 break;
 
-            case REQUEST_CODE_PAYMENT_SETTINGS:
-                if (data != null) {
-                    Bundle extra = data.getExtras();
-                    mResultCode.setText("Result code: " + extra.getInt(SumUpAPI.Response.RESULT_CODE));
-                    mResultMessage.setText("Message: " + extra.getString(SumUpAPI.Response.MESSAGE));
-                }
-                break;
-
             default:
                 break;
+        }
+    }
+
+    private void setResultCodeAndMessage(Intent data) {
+        if (data != null) {
+            Bundle extra = data.getExtras();
+            mResultCode.setText("Result code: " + extra.getInt(SumUpAPI.Response.RESULT_CODE));
+            mResultMessage.setText("Message: " + extra.getString(SumUpAPI.Response.MESSAGE));
         }
     }
 

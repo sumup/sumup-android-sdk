@@ -61,3 +61,16 @@ SMC is dual licensed under Mozzile Public License, version 1.1 and GNU General P
 [Threetenbp](https://github.com/ThreeTen/threetenbp)
 
 [LICENSE](https://github.com/ThreeTen/threetenbp/blob/master/LICENSE.txt)
+
+---
+
+[Hilt](https://github.com/googlecodelabs/android-hilt)
+
+[LICENSE](https://github.com/googlecodelabs/android-hilt/blob/main/LICENSE)
+
+---
+
+[Retrofit](https://github.com/square/retrofit)
+
+[LICENSE](https://github.com/square/retrofit/blob/master/LICENSE.txt)
+

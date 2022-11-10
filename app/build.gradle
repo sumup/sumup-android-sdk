@@ -1,20 +1,26 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "com.sumup.sdksampleapp"
-        minSdkVersion 16
-        targetSdkVersion 30
+        minSdkVersion 23
+        targetSdkVersion 32
         versionCode 1
-        versionName "3.4.0"
+        versionName "4.0.0"
     }
 
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     buildTypes {
@@ -27,7 +33,9 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
 
-    implementation 'com.sumup:merchant-sdk:3.4.0'
+    implementation 'com.sumup:merchant-sdk:4.0.0'
+
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
 }

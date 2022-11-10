@@ -33,11 +33,11 @@
       android:layout_gravity="center"/>
 
     <Button
-      android:id="@+id/button_payment_settings"
+      android:id="@+id/button_card_reader_page"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginBottom="16dp"
-      android:text="Payment Settings"
+      android:text="Card Reader Page"
       android:layout_gravity="center"/>
 
     <Button

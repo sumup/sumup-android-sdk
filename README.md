@@ -12,15 +12,15 @@ For more information about SumUp developer products, please refer to our <a href
 
 ## Prerequisites
 1. Registered for a merchant account via SumUp's [country websites](https://sumup.com/) (or received a test account)
-2. Received SumUp card terminal: Air, Air Lite or PIN+ Terminal
+2. Received SumUp card terminal: Solo, Air, Air Lite or PIN+ Terminal
 3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers
-4. SumUp SDK requires `minSdkVersion` 16 or later
-    * To keep up with the latest updates and ensuring forward compatibility, the next SumUp SDK version will drop the support for Android 5(API 22) and below
-5. Project [migrated to AndroidX](https://developer.android.com/jetpack/androidx/migrate)
-6. Android Gradle plugin 3.3.0 or later
-7. If using Kotlin, version 1.3.10 or later
-8. When using API 30 and above, it is now necessary to [add queries in your AndroidManifest.xml](#9-manifest-parameters) to keep seeing contact picker on the success screen
-9. Next SDK version will update the Java compatibility to Java 8
+4. SumUp SDK requires `minSdkVersion` 23 or later
+   - For Android SDK below 26, it is required to enable desugaring for Java 8+ API compatibility. See dedicated section [here](https://github.com/sumup/sumup-android-sdk#12-supporting-android-api-below-26)
+6. SumUp SDK ensures support for
+   - `targetSDK` 30 or later
+   - AGP 7.0.0 or later
+   - Kotlin version 1.5.21 or later
+   - Java 11 and later 
 
 ## I. Integrate the SumUp SDK
 
@@ -43,7 +43,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-implementation 'com.sumup:merchant-sdk:3.4.0'
+implementation 'com.sumup:merchant-sdk:4.0.0'
 ```
 
 
@@ -131,6 +131,7 @@ Several response fields are available when the callback activity is called:
     * SumUpAPI.Response.ResultCode.ERROR_INVALID_AFFILIATE_KEY = 10
     * SumUpAPI.Response.ResultCode.ERROR_ALREADY_LOGGED_IN = 11
     * SumUpAPI.Response.ResultCode.ERROR_INVALID_AMOUNT_DECIMALS = 12
+    * SumUpAPI.Response.ResultCode.ERROR_API_LEVEL_TOO_LOW = 13
 * SumUpAPI.Response.MESSAGE
   * Type: String
   * Description: A human readable message describing the result of the payment
@@ -171,12 +172,26 @@ When a merchant is logged in, you can enable them to change their payment method
  	SumUpAPI.openPaymentSettingsActivity(MainActivity.this, 3);
  ```
 
-### 3. Prepare the SumUp Card terminal in advance
+### 3. Card reader page
+
+When a merchant is logged in, you can open this activity to access all the settings and options related to the card reader.
+* This activity mainly offers
+    * To be able to connect to a new card reader.
+    * To be able to see the reader attributes when previously connected i.e. Battery percentage, Serial number, Last three digits of serial number, Software version.
+    * Connect to the last saved reader if it is inactive.
+    * Update firmware of the reader if available.
+    * Visual illustration of the saved reader with it's current connectivity status and name.
+
+```java
+ 	SumUpAPI.openCardReaderPage(MainActivity.this, 4);
+ ```
+
+### 4. Prepare the SumUp Card terminal in advance
 To prepare a SumUp card terminal for checkout, a registered SumUp merchant account needs to be logged in and the card terminal will have been already setup. 
 Calling `prepareForCheckout()` before instancing a checkout will speed up the checkout time.
 
 
-### 4. Additional checkout parameters
+### 5. Additional checkout parameters
 When setting up the `SumUpPayment` object, the following optional parameters can be included:
 
 #### Tip amount
@@ -192,7 +207,7 @@ To skip the success screen shown at the end of a successful transaction, the `sk
 #### Skip failed screen
 To skip the failed screen shown at the end of a failed transaction, the `skipFailedScreen` parameter can be used. When using this parameter  your application is responsible for displaying the transaction result to the customer. Please note failed screens will still be shown when using the SumUp Air Lite readers.
 
-### 5. Transparent authentication
+### 6. Transparent authentication
 
 To authenticate an account without the user typing in their SumUp credentials each time, you can generate an access token using OAuth2.0 and use it to transparently login to the SumUp SDK.
 
@@ -205,7 +220,7 @@ For information about how to obtain a token, please see the [API Documentation](
 
 If the token is invalid, `SumUpAPI.Response.ResultCode.ERROR_INVALID_TOKEN` will be returned.
 
-### 6. Retrieve data of the current merchant account
+### 7. Retrieve data of the current merchant account
 
 If a merchant account is currently logged in, it is possible to retrieve the data for this account.
 
@@ -217,13 +232,13 @@ If a merchant account is currently logged in, it is possible to retrieve the dat
 	}
 ```
 
-### 7. Log out SumUp account
+### 8. Log out SumUp account
  ```java
  	SumUpAPI.logout();
  ```
 
 
-### 8. Enable ProGuard
+### 9. Enable ProGuard
 ```groovy
    buildTypes {
         release {
@@ -234,30 +249,64 @@ If a merchant account is currently logged in, it is possible to retrieve the dat
     }
 ```
 
-### 9. Manifest Parameters
-
-When using API 30 or above, it is now necessary to add queries in your AndroidManifest.xml for contact picker on the success screen
-```xml
-<queries>
-   <intent>
-      <action android:name="android.intent.action.PICK" />
-      <data android:mimeType="vnd.android.cursor.dir/email_v2" />
-   </intent>
-</queries>
-```
-
 ### 10. Use Google Location Services
        
 The SDK supports Google Location Services, to improve location accuracy and reduce power consumption.
 
 In order to use it you need to add the dependency in build.gradle file 
 ```groovy
-implementation "com.google.android.gms:play-services-location:17.0.0"
+implementation "com.google.android.gms:play-services-location:19.0.1"
 ```
        
 If the GLS dependency is not added to the project or Google Play Services are not installed on the mobile device the SumUp SDK will determine the location with the default Location Service provided by Android.
        
-> NOTE: Using GLS version 17.0.0 is recommended.
+> NOTE: Using GLS version 19.0.1 is recommended.
+
+### 11. TargetSDK lower than 31
+Even if the SumUp SDK is now set to targetSDK 31, backward compatibility to lower targetSDK is ensured. However, the following will be necessary to be added in the AndroidManifest.xml
+
+```java
+   <uses-permission
+      android:name="android.permission.BLUETOOTH_SCAN"
+      tools:node="remove"/>
+
+    <uses-permission
+      android:name="android.permission.BLUETOOTH_CONNECT"
+      tools:node="remove"/>
+
+    <uses-permission
+      android:name="android.permission.BLUETOOTH_SCAN" />
+
+    <uses-permission
+      android:name="android.permission.BLUETOOTH_CONNECT" />
+```
+
+**WARNING**: Make sure to remove this block of code when raising your targetSDK to 31 and above!
+
+### 12. Supporting Android API below 26
+For Android SDK below 26, it is required to enable desugaring for Java 8+ API compatibility.
+
+```groovy
+android {
+  compileOptions {
+    coreLibraryDesugaringEnabled true
+  }
+}
+
+dependencies {
+  coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
+}
+```
+
+### 13. Retain BLE Connection (Experimental)
+
+It is possible to avoid BLE reconnection to a card reader after a transaction by calling the experimental method: `SumUpExperimentalAPI.prepareForCheckout(boolean retainBLEConnection)`.
+
+This method can replace the usage of the existing `prepareForCheckout()` described in section 4 above, only if one needs to retain the BLE connection.
+
+Retaining the BLE connection should improve the experience of Merchants as the card reader will remain connected after each transaction.
+
+> Note : The behavior is only available for Air and Solo card readers
 
 ## Out of Scope
 The following functions are handled by the [SumUp APIs](http://docs.sumup.com/rest-api/):

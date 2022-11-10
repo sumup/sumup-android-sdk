@@ -2,6 +2,31 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 4.0.0
+* [ADDED] Introduction of the Card reader page which centralises all the options related to the card reader in a single activity
+* [ADDED] Introduction of the support for SumUp 'Solo' card reader (beta phase)
+* [ADDED - Experimental] Retain BLE connection at the end of a transaction (see dedicated section in README [here](https://github.com/sumup/sumup-android-sdk#13-retain-ble-connection-experimental) for more)
+* [REMOVED] Dropping support for Android 5 (API 22) and below – Dedicated error code introduced for handling unsupported API levels - SumUpAPI.Response.ResultCode.ERROR_API_LEVEL_TOO_LOW
+* [API CHANGE] SumUpApi.openPaymentSettingsActivity(Activity activity, int requestCode) is deprecated in favor of SumUpApi.openCardReaderPage(Activity activity, int requestCode)
+* [IMPROVEMENT] New tablet layout for the login screen
+* [IMPROVEMENT] Refreshed SumUp Brand Design Language for failed, successful and receipt screens
+* [IMPROVEMENT] Updates about the technical stack:
+   * Building with AGP 7.0.0 and Java 11
+  * Raises targetSdkVersion to API 31 - it is still possible to target API 30 with some handling in your AndroidManifest.xml (see dedicated section in README [here](https://github.com/sumup/sumup-android-sdk#11-targetsdk-lower-than-31) for more)
+  * Minimum Kotlin is upgraded to 1.5.21
+  * Minimum Kotlin Coroutine is upgraded to 1.5.1
+  * Minimum AGP is upgraded to 4.0.2
+  * Drops support for Android 5 (API 22) and below
+  * Raises recommended Play Services Location to version 19.0.1
+  * Raises OkHttp to version 4.9.0
+  * Minimum Material component is upgraded to 1.3.0
+  * Minimum AndroidX Annotation is upgraded to version 1.2.0
+  * Minimum AndroidX Fragment is upgraded to version 1.3.6
+  * Minimum Moshi is upgraded to 1.12.0
+  * Introduces Hilt - minimum supported version 2.40.5
+  * Introduces Retrofit - minimum supported version 2.9.0
+* [REMOVED] Contact Picker functionality from the Transaction Success screen
+
 ## Version 3.4.0
 * [ADDED] Ability to skip the transaction failed screen by calling `skipFailedScreen()`
 * [ADDED] Support for Colombian Peso and Croatian Kuna currencies - `SumUpPayment.Currency.COP`, `SumUpPayment.Currency.HRK`
