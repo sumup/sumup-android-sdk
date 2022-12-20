@@ -2,6 +2,9 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 4.0.1
+* [FIXED] A crash after successful transaction if one of the `receiptEmail` or `mobilePhone` is missing from the `SumUpPayment.builder()`
+
 ## Version 4.0.0
 * [ADDED] Introduction of the Card reader page which centralises all the options related to the card reader in a single activity
 * [ADDED] Introduction of the support for SumUp 'Solo' card reader (beta phase)
