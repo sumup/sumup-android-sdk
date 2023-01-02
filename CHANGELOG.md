@@ -2,6 +2,12 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 4.0.3
+* [FIXED] "duplicate class" issue (due to R8 obfuscation) possibly happening when integrating with other external libraries
+
+## Version 4.0.2
+* Internal release with no public purpose (advertising only for consistency)
+
 ## Version 4.0.1
 * [FIXED] A crash after successful transaction if one of the `receiptEmail` or `mobilePhone` is missing from the `SumUpPayment.builder()`
 
