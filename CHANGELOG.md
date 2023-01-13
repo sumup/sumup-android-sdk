@@ -12,6 +12,7 @@ For more information, see the [README](https://github.com/sumup/Android-Merchant
 * [FIXED] A crash after successful transaction if one of the `receiptEmail` or `mobilePhone` is missing from the `SumUpPayment.builder()`
 
 ## Version 4.0.0
+* [ADDED] Starting with firmware version 1.0.1.84, Air card readers with serial numbers starting with 108, 109 or later require SDK version 4.0.0 and later. Please update to the latest SDK version if you need to support these readers
 * [ADDED] Introduction of the Card reader page which centralises all the options related to the card reader in a single activity
 * [ADDED] Introduction of the support for SumUp 'Solo' card reader (beta phase)
 * [ADDED - Experimental] Retain BLE connection at the end of a transaction (see dedicated section in README [here](https://github.com/sumup/sumup-android-sdk#13-retain-ble-connection-experimental) for more)

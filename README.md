@@ -22,6 +22,10 @@ For more information about SumUp developer products, please refer to our <a href
    - Kotlin version 1.5.21 or later
    - Java 11 and later 
 
+## Compatibility
+
+* Starting with firmware version 1.0.1.84, Air card readers with serial numbers starting with 108, 109 or later require SDK version 4.0.0 and later. Please update to the latest SDK version if you need to support these readers.
+
 ## I. Integrate the SumUp SDK
 
   * You can use the sample app provided in this repository as a reference
