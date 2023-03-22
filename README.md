@@ -313,12 +313,12 @@ Retaining the BLE connection should improve the experience of Merchants as the c
 > Note : The behavior is only available for Air and Solo card readers
 
 ## Out of Scope
-The following functions are handled by the [SumUp APIs](http://docs.sumup.com/rest-api/):
-* [Refunds](https://docs.sumup.com/rest-api/#tag/Refunds)
-* [Transaction history](https://docs.sumup.com/rest-api/#tag/Transactions)
-* [Receipts](https://docs.sumup.com/rest-api/#tag/Receipts)
-* [Account management](https://docs.sumup.com/rest-api/#tag/Account-Details)
-* [Online Payments](https://developer.sumup.com/docs/getting-started/#api-overview)
+The following functions are handled by the [SumUp APIs](https://developer.sumup.com/docs/api/sum-up-rest-api/):
+* [Refunds](https://developer.sumup.com/docs/api/refunds/)
+* [Transaction history](https://developer.sumup.com/docs/api/list-transactions/)
+* [Receipts](https://developer.sumup.com/docs/api/receipts/)
+* [Account management](https://developer.sumup.com/docs/api/account-details/)
+* [Online Payments](https://developer.sumup.com/docs/online-payments/introduction/getting-started/)
 
 ## Community
 - **Questions?** Get in contact with our integration team by sending an email to
