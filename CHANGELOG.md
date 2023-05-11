@@ -2,6 +2,10 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 4.1.1
+* [FIXED] A misbehavior that could lead to isolated cases of rescanning for a card reader before a checkout
+* [FIXED] A crash that can occur when finalizing a firmware update on an Air card reader
+
 ## Version 4.1.0
 * [ADDED] Introduction of the tip on card reader feature, which allows the customer to add a tip directly on the card reader instead of the Android device with `tipOnCardReader` (see dedicated section in README [here](https://github.com/sumup/sumup-android-sdk#tip-on-card-reader) for more)
 * [IMPROVEMENT] Retain BLE connection at the end of a transaction is now default - `SumUpExperimentalAPI.prepareForCheckout(boolean retainBLEConnection)` is deprecated accordingly in favor of `SumUpAPI.prepareForCheckout()`
