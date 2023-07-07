@@ -3,7 +3,7 @@
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
 ## Version 4.2.0
-* [ADDED] Support for Peruvian Sol currency – `SumUpPayment.Currency.SOL`
+* [ADDED] Support for Peruvian Sol currency – `SumUpPayment.Currency.PEN`
 * [IMPROVEMENT] Enhanced tablet view UI in card reader setup when multiple card readers are discovered
 
 ## Version 4.1.1
