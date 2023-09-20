@@ -14,8 +14,7 @@ For more information about SumUp developer products, please refer to our <a href
 1. Registered for a merchant account via SumUp's [country websites](https://sumup.com/) (or received a test account)
 2. Received SumUp card terminal: Solo, Air, Air Lite or PIN+ Terminal
 3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers
-4. SumUp SDK requires `minSdkVersion` 23 or later
-   - For Android SDK below 26, it is required to enable desugaring for Java 8+ API compatibility. See dedicated section [here](https://github.com/sumup/sumup-android-sdk#12-supporting-android-api-below-26)
+4. SumUp SDK requires `minSdkVersion` 26 or later
 6. SumUp SDK ensures support for
    - `targetSDK` 30 or later
    - AGP 7.0.0 or later
@@ -47,7 +46,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-implementation 'com.sumup:merchant-sdk:4.2.0'
+implementation 'com.sumup:merchant-sdk:4.3.0'
 ```
 
 
@@ -294,21 +293,6 @@ Even if the SumUp SDK is now set to targetSDK 31, backward compatibility to lowe
 ```
 
 **WARNING**: Make sure to remove this block of code when raising your targetSDK to 31 and above!
-
-### 11. Supporting Android API below 26
-For Android SDK below 26, it is required to enable desugaring for Java 8+ API compatibility.
-
-```groovy
-android {
-  compileOptions {
-    coreLibraryDesugaringEnabled true
-  }
-}
-
-dependencies {
-  coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
-}
-```
 
 ## Out of Scope
 The following functions are handled by the [SumUp APIs](https://developer.sumup.com/docs/api/sum-up-rest-api/):

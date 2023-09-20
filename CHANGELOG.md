@@ -1,6 +1,13 @@
 # Changelog
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
+## Version 4.3.0
+* [REMOVED] Dropping support for Android 7 (API 25) and below 
+* [ADDED] Solo USB under Beta: the Solo card reader now supports connecting and transacting over USB cable. The minimum required Solo software version that supports the USB mode is 3.3.17.2.
+  * If this version (3.3.17.2) is not yet available on your Solo when connected via Bluetooth, you can switch it to standalone mode (Menu-> Connection -> WiFi), login directly on the Solo and update it to the latest version. 
+  * Solo USB is under beta phase which means that the feature still requires some optimization to ensure full stability.
+  * Known limitation: currently, if the USB cable is unplugged, the USB permission on the mobile device will need to be regranted.
+  * As of now, Solo is not able to wake up automatically from sleep mode. A connection needs to be reestablished from the Card Reader page.
 
 ## Version 4.2.0
 * [ADDED] Support for Peruvian Sol currency – `SumUpPayment.Currency.PEN`
