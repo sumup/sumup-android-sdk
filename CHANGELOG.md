@@ -1,6 +1,26 @@
 # Changelog
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
+## Version 5.0.0
+* [ADDED] Support for the Solo Lite card reader (beta phase)
+* [ADDED] Support for Australian Dollar and Mexican Pesos currencies - `SumUpPayment.Currency.AUD`, `SumUpPayment.Currency.MXN`
+* [ADDED] New Troubleshooting flow for all our readers
+* [ADDED] Introduction of a unified Black and White theme that represents "One Design Language" across all SumUp products
+* [FIXED] A crash that was happening due to the play services location version incompatibility.
+* [IMPROVEMENT] Updates about the technical stack:
+    * Minimum supported targetSDK is 31
+    * Minimum Kotlin is upgraded to 1.7.21
+    * Minimum Kotlin Coroutine is upgraded to 1.6.4
+    * Minimum AndroidX Activity is upgraded to version 1.5.1
+    * Minimum AndroidX Fragment is upgraded to version 1.5.7
+    * Minimum AppCompat is upgraded to 1.4.2
+    * Minimum Material Components is upgraded to 1.6.1
+    * Minimum Moshi is upgraded to 1.14.0
+    * Minimum Hilt is upgraded to 2.44.2
+    * Minimum AGP is upgraded to 7.3.0
+    * Building with AGP 7.3.0
+    * Updated Play services location to 21.0.1
+
 ## Version 4.3.0
 * [REMOVED] Dropping support for Android 7 (API 25) and below 
 * [ADDED] Solo USB under Beta: the Solo card reader now supports connecting and transacting over USB cable. The minimum required Solo software version that supports the USB mode is 3.3.17.2.

@@ -4,12 +4,6 @@ Portions of the SumUp Android SDK and sample app may utilize the following copyr
 
 ---
 
-[android-apt](https://bitbucket.org/hvisser/android-apt)
-
-This plugin is created by Hugo Visser and released in the [public domain](http://unlicense.org/)
-
----
-
 [Android-Universal-Image-Loader](https://github.com/nostra13/Android-Universal-Image-Loader)
 
 [LICENCE](https://github.com/nostra13/Android-Universal-Image-Loader/blob/master/LICENSE)
@@ -40,12 +34,6 @@ SMC is dual licensed under Mozzile Public License, version 1.1 and GNU General P
 
 ---
 
-[Toothpick](https://github.com/stephanenicolas/toothpick/)
-
-[LICENCE](https://github.com/stephanenicolas/toothpick/blob/master/LICENSE)
-
----
-
 [Kotlin](https://github.com/JetBrains/kotlin)
 
 [LICENSE](https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt)
@@ -55,12 +43,6 @@ SMC is dual licensed under Mozzile Public License, version 1.1 and GNU General P
 [Moshi](https://github.com/square/moshi)
 
 [LICENSE](https://github.com/square/moshi/blob/master/LICENSE.txt)
-
----
-
-[Threetenbp](https://github.com/ThreeTen/threetenbp)
-
-[LICENSE](https://github.com/ThreeTen/threetenbp/blob/master/LICENSE.txt)
 
 ---
 
@@ -74,3 +56,8 @@ SMC is dual licensed under Mozzile Public License, version 1.1 and GNU General P
 
 [LICENSE](https://github.com/square/retrofit/blob/master/LICENSE.txt)
 
+---
+
+[Okio](https://github.com/square/okio)
+
+[LICENSE](https://github.com/square/okio/blob/master/LICENSE.txt)

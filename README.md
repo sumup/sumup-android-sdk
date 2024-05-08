@@ -16,9 +16,9 @@ For more information about SumUp developer products, please refer to our <a href
 3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers
 4. SumUp SDK requires `minSdkVersion` 26 or later
 6. SumUp SDK ensures support for
-   - `targetSDK` 30 or later
-   - AGP 7.0.0 or later
-   - Kotlin version 1.5.21 or later
+   - `targetSDK` 31 or later
+   - AGP 7.3.0 or later
+   - Kotlin version 1.7.21 or later
    - Java 11 and later 
 
 ## Compatibility
@@ -46,7 +46,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-implementation 'com.sumup:merchant-sdk:4.3.0'
+implementation 'com.sumup:merchant-sdk:5.0.0'
 ```
 
 
@@ -272,27 +272,6 @@ implementation "com.google.android.gms:play-services-location:19.0.1"
 If the GLS dependency is not added to the project or Google Play Services are not installed on the mobile device the SumUp SDK will determine the location with the default Location Service provided by Android.
        
 > NOTE: Using GLS version 19.0.1 is recommended.
-
-### 10. TargetSDK lower than 31
-Even if the SumUp SDK is now set to targetSDK 31, backward compatibility to lower targetSDK is ensured. However, the following will be necessary to be added in the AndroidManifest.xml
-
-```java
-   <uses-permission
-      android:name="android.permission.BLUETOOTH_SCAN"
-      tools:node="remove"/>
-
-    <uses-permission
-      android:name="android.permission.BLUETOOTH_CONNECT"
-      tools:node="remove"/>
-
-    <uses-permission
-      android:name="android.permission.BLUETOOTH_SCAN" />
-
-    <uses-permission
-      android:name="android.permission.BLUETOOTH_CONNECT" />
-```
-
-**WARNING**: Make sure to remove this block of code when raising your targetSDK to 31 and above!
 
 ## Out of Scope
 The following functions are handled by the [SumUp APIs](https://developer.sumup.com/docs/api/sum-up-rest-api/):
