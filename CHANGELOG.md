@@ -1,6 +1,9 @@
 # Changelog
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
+## Version 5.0.1
+* [FIXED] "duplicate class" issue (due to R8 obfuscation) possibly happening when integrating with other external libraries
+
 ## Version 5.0.0
 * [ADDED] Support for the Solo Lite card reader (beta phase)
 * [ADDED] Support for Australian Dollar and Mexican Pesos currencies - `SumUpPayment.Currency.AUD`, `SumUpPayment.Currency.MXN`

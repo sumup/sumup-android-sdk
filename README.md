@@ -46,7 +46,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-implementation 'com.sumup:merchant-sdk:5.0.0'
+implementation 'com.sumup:merchant-sdk:5.0.1'
 ```
 
 
