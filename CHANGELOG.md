@@ -1,6 +1,10 @@
 # Changelog
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
+## Version 5.0.2
+* [FIXED] An issue where successful transactions were returned without all the relevant information in the SumUpAPI.Response.TX_INFO object, e.g. the card type
+* [FIXED] A bug where initiating a checkout while the Card Reader payment method was disabled in the merchant settings resulted in a transaction failure. The SDK now enables it intrinsically
+
 ## Version 5.0.1
 * [FIXED] "duplicate class" issue (due to R8 obfuscation) possibly happening when integrating with other external libraries
 
