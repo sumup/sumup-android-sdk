@@ -4,6 +4,8 @@ For more information, see the [README](https://github.com/sumup/Android-Merchant
 ## Version 5.0.2
 * [FIXED] An issue where successful transactions were returned without all the relevant information in the SumUpAPI.Response.TX_INFO object, e.g. the card type
 * [FIXED] A bug where initiating a checkout while the Card Reader payment method was disabled in the merchant settings resulted in a transaction failure. The SDK now enables it intrinsically
+* [KNOWN BEHAVIOR]
+    * Declined/failed transactions may sometimes not return the card data (only) - SumUpAPI.Response.TX_INFO will still be populated with all the remaining metadata. This would depend on the exact moment any connectivity issue happened, that is whether card data from the reader was sent to the back-end or not.
 
 ## Version 5.0.1
 * [FIXED] "duplicate class" issue (due to R8 obfuscation) possibly happening when integrating with other external libraries
