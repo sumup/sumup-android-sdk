@@ -1,6 +1,17 @@
 # Changelog
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
+## Version 5.0.3
+* [ADDED] Introduces "configureRetryPolicy()" in the payment builder to configure the retry policy when the result of a transaction can not be retrieved at the end of a transaction. (see dedicated section in README [here](https://github.com/sumup/sumup-android-sdk#retry-policy-configuration) for more)
+    * Both `pollingInterval` and `maxWaitingTime` should be provided in milliseconds.
+    * If `disableBackButton` is set to true, the Android device's back button will be disabled while the retry screen is shown.
+    * If `maxWaitingTime` elapses without a response, `SumUpAPI.ResultCode.ERROR_UNKNOWN_TRANSACTION_STATUS` will be returned.
+    * If `disableBackButton` is set to false, pressing the back button while the retry screen is displayed will also return `SumUpAPI.ResultCode.ERROR_UNKNOWN_TRANSACTION_STATUS`.
+    * If `pollingInterval` is greater than `maxWaitingTime`, the value of `maxWaitingTime` will be adjusted to match `pollingInterval`.
+    * If either `pollingInterval` or `maxWaitingTime` is passed as a negative value, it will default to 0.
+    * If `configureRetryPolicy()` is not called, the SDK will default to returning the `SumUpAPI.ResultCode.ERROR_TRANSACTION_FAILED` error code, and default values will be used while trying to get the status of the transaction.
+    * Default values are 2000 ms for the `pollingInterval` and 60000 ms for the `maxWaitingTime`.
+
 ## Version 5.0.2
 * [FIXED] An issue where successful transactions were returned without all the relevant information in the SumUpAPI.Response.TX_INFO object, e.g. the card type
 * [FIXED] A bug where initiating a checkout while the Card Reader payment method was disabled in the merchant settings resulted in a transaction failure. The SDK now enables it intrinsically

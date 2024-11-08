@@ -75,6 +75,7 @@ public class MainActivity extends Activity {
                         .addAdditionalInfo("AccountId", "taxi0334")
                         .addAdditionalInfo("From", "Paris")
                         .addAdditionalInfo("To", "Berlin")
+                        .configureRetryPolicy(2000, 60000, true)
                         // optional: foreign transaction ID, must be unique!
                         .foreignTransactionId(UUID.randomUUID().toString()) // can not exceed 128 chars
                         .build();

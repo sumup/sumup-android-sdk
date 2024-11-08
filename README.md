@@ -46,7 +46,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-implementation 'com.sumup:merchant-sdk:5.0.2'
+implementation 'com.sumup:merchant-sdk:5.0.3'
 ```
 
 
@@ -138,6 +138,8 @@ Several response fields are available when the callback activity is called:
     * SumUpAPI.Response.ResultCode.ERROR_ALREADY_LOGGED_IN = 11
     * SumUpAPI.Response.ResultCode.ERROR_INVALID_AMOUNT_DECIMALS = 12
     * SumUpAPI.Response.ResultCode.ERROR_API_LEVEL_TOO_LOW = 13
+    * SumUpAPI.Response.ResultCode.ERROR_CARD_READER_SETTINGS_OFF = 14
+    * SumUpAPI.Response.ResultCode.ERROR_UNKNOWN_TRANSACTION_STATUS = 15
 * SumUpAPI.Response.MESSAGE
   * Type: String
   * Description: A human readable message describing the result of the payment
@@ -207,6 +209,24 @@ A tip amount can be prompted directly in the card reader by using `tipOnCardRead
 > Note: Not all card readers support this feature. To find out if the feature is supported for the last-saved card reader, you should always check `SumUpApi.isTipOnCardReaderAvailable()`. You must handle this case yourself in order to avoid no tip from being prompted.
 Please also note that if both `tip` and `tipOnCardReader` are called then only `tipOnCardReader` amount will be considered during checkout if available.
 
+#### Retry Policy Configuration
+The `configureRetryPolicy()` feature allows you to set custom retry parameters for transaction result retrieval, using `pollingInterval`, `maxWaitingTime`, and `disableBackButton`.
+* Parameters: Both `pollingInterval` and `maxWaitingTime` should be provided in milliseconds, with default values of 2000 ms and 60000 ms, respectively. Setting `disableBackButton` to true disables the back button during retries.
+* Timeout: If `maxWaitingTime` elapses with no result, the SDK returns `SumUpAPI.ResultCode.ERROR_UNKNOWN_TRANSACTION_STATUS`. Pressing the back button (if enabled) during retries will also trigger this error.
+* Adjustments: If `pollingInterval` exceeds `maxWaitingTime`, `maxWaitingTime` will automatically be adjusted to match. Negative values for either parameter default to 0.
+* Default: If `configureRetryPolicy()` is not used, the SDK defaults to returning `SumUpAPI.ResultCode.ERROR_TRANSACTION_FAILED`.
+
+##### Querying the Transaction Status
+When using the SumUp payment as shown below:
+
+```java
+SumupPayment.builder()
+...
+.foreignTransactionId(UUID.randomUUID().toString())
+.configureRetryPolicy(2000, 60000, true)
+.build();
+```
+If there are connectivity issues and the transaction status can not be retrieved, the API will return `ERROR_UNKNOWN_TRANSACTION_STATUS`. In such cases, you can query the transaction status by calling [SumUp transaction status API](https://developer.sumup.com/api/transactions/get) using the specified `foreignTransactionId`.
 
 #### Transaction identifier
 The `foreignTransactionID` identifier will be associated with the transaction and can be used to retrieve details related to the transaction. See [API documentation](https://developer.sumup.com/rest-api/#tag/Transactions) for details. Please make sure that this ID is unique within the scope of the SumUp merchant account and sub-accounts. It must not be longer than 128 characters.
