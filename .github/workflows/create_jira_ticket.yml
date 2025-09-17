@@ -1,0 +1,69 @@
+name: Create Jira Ticket for Bugs
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  create-jira:
+    if: github.event.label.name == 'bug'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Jira Issue
+        run: |
+          set -euo pipefail
+
+          # Prepare fields
+          SUMMARY="[GitHub][Android SDK] ${{ github.event.issue.title }}"
+          ISSUE_URL="${{ github.event.issue.html_url }}"
+          ISSUE_BODY="${{ github.event.issue.body }}"
+
+          # Build JSON payload in Atlassian Document Format (ADF)
+          JSON_PAYLOAD=$(jq -n \
+            --arg summary "$SUMMARY" \
+            --arg url "$ISSUE_URL" \
+            --arg body "$ISSUE_BODY" \
+            --arg project "${{ secrets.JIRA_PROJECT_KEY }}" \
+            --argjson labels '${{ secrets.JIRA_LABELS }}' \
+            '{
+              fields: {
+                project: { key: $project },
+                summary: $summary,
+                description: {
+                  type: "doc",
+                  version: 1,
+                  content: [
+                    {
+                      type: "paragraph",
+                      content: [
+                        {
+                          type: "text",
+                          text: "GitHub issue: ",
+                          marks: []
+                        },
+                        {
+                          type: "text",
+                          text: $url,
+                          marks: [{ type: "link", attrs: { href: $url } }]
+                        }
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      content: [
+                        { type: "text", text: $body }
+                      ]
+                    }
+                  ]
+                },
+                issuetype: { name: "Bug" },
+                labels: $labels
+              }
+            }'
+          )
+
+          # Create Jira issue
+          curl -sS -u "${{ secrets.JIRA_USERNAME }}:${{ secrets.JIRA_API_TOKEN }}" -X POST \
+            -H "Content-Type: application/json" \
+            --data "$JSON_PAYLOAD" \
+            "${{ secrets.JIRA_BASE_URL }}/rest/api/3/issue"
