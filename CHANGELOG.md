@@ -1,6 +1,9 @@
 # Changelog
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
+## Version 5.0.4
+* [FIXED] The SDK does not enforce landscape screen orientation on the Signature screen, similar to the rest of the payment flow.
+
 ## Version 5.0.3
 * [ADDED] Introduces "configureRetryPolicy()" in the payment builder to configure the retry policy when the result of a transaction can not be retrieved at the end of a transaction. (see dedicated section in README [here](https://github.com/sumup/sumup-android-sdk#retry-policy-configuration) for more)
     * Both `pollingInterval` and `maxWaitingTime` should be provided in milliseconds.

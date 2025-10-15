@@ -46,7 +46,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-implementation 'com.sumup:merchant-sdk:5.0.3'
+implementation 'com.sumup:merchant-sdk:5.0.4'
 ```
 
 
@@ -311,4 +311,4 @@ Please provide as much information as possible.
  [SumUp Android SDK Changelog](https://github.com/sumup/Android-MerchantSDK/blob/master/CHANGELOG.md)
 
 ## License
-[SumUp Android SDK License](https://github.com/sumup/Android-MerchantSDK/blob/master/LICENSE.md)
+[SumUp Android SDK License](https://github.com/sumup/Android-MerchantSDK/blob/master/LICENSE)
