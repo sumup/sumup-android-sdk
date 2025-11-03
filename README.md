@@ -12,14 +12,14 @@ For more information about SumUp developer products, please refer to our <a href
 
 ## Prerequisites
 1. Registered for a merchant account via SumUp's [country websites](https://sumup.com/) (or received a test account)
-2. Received SumUp card terminal: Solo, Air, Air Lite or PIN+ Terminal
+2. Received SumUp card terminal: Solo, Solo lite, Air, Air Lite or PIN+ Terminal
 3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers
 4. SumUp SDK requires `minSdkVersion` 26 or later
-6. SumUp SDK ensures support for
-   - `targetSDK` 31 or later
-   - AGP 7.3.0 or later
-   - Kotlin version 1.7.21 or later
-   - Java 11 and later 
+5. SumUp SDK ensures support for
+   - `targetSDK` 35 or later
+   - AGP 8.8.0 or later
+   - Kotlin version 1.9.0 or later
+   - Java 17 and later 
 
 ## Compatibility
 
@@ -46,7 +46,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-implementation 'com.sumup:merchant-sdk:5.0.4'
+implementation 'com.sumup:merchant-sdk:6.0.0'
 ```
 
 
@@ -117,6 +117,8 @@ Once logged in, you can start using the SumUp SDK to accept card payments. If no
    }
 ```
 
+### 6. Offline payments
+* For offline payments support, please refer to the [Offline payments](https://github.com/sumup/sumup-android-sdk/blob/master/OFFLINE_PAYMENTS.md) documentation.
 
 ## II. Additional features
 
@@ -147,7 +149,7 @@ Several response fields are available when the callback activity is called:
   * Type: String
   * Description: The transaction code associated with the payment
 * SumUpAPI.Response.TX_INFO
-  * Type: Parcelable of type com.sumup.merchant.Models.TransactionInfo
+  * Type: Parcelable of type com.sumup.checkout.core.models.TransactionInfo
   * Description: Transaction info object containing information about this transaction. It contains the following information:
     - Transaction Code
     - Merchant Code
@@ -165,6 +167,12 @@ Several response fields are available when the callback activity is called:
 * SumUpAPI.Response.RECEIPT_SENT
   * Type: boolean
   * Description: true if a receipt was issued to the customer, false otherwise
+* SumUpAPI.Response.CARD_READER_MODEL
+  * Type: String
+  * Description: The model of the card reader used for the transaction
+* SumUpAPI.Response.CARD_READER_FIRMWARE_VERSION
+  * Type: String
+  * Description: The firmware version of the card reader used for the transaction
 
 The response flags are provided within the Bundle that is passed back to the callback activity:
 
@@ -311,4 +319,4 @@ Please provide as much information as possible.
  [SumUp Android SDK Changelog](https://github.com/sumup/Android-MerchantSDK/blob/master/CHANGELOG.md)
 
 ## License
-[SumUp Android SDK License](https://github.com/sumup/Android-MerchantSDK/blob/master/LICENSE)
+[SumUp Android SDK License](https://github.com/sumup/Android-MerchantSDK/blob/master/LICENSE.md)

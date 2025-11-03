@@ -33,6 +33,22 @@
       android:layout_gravity="center"/>
 
     <Button
+        android:id="@+id/button_update_security_patch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Update offline security patch"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/button_upload_offline_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Upload offline transactions"
+        android:layout_gravity="center"/>
+
+    <Button
       android:id="@+id/button_card_reader_page"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -55,6 +71,14 @@
       android:layout_marginBottom="16dp"
       android:text="Log out"
       android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/button_offline_session_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Offline session info"
+        android:layout_gravity="center"/>
 
   <ScrollView
     android:layout_width="wrap_content"
@@ -107,6 +131,14 @@
         android:textSize="18sp"
         android:padding="8dp"
         tools:text="Transaction Info : -"/>
+
+        <TextView
+            android:id="@+id/tv_offline_session_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:padding="8dp"
+            tools:text="Offline session Info : -"/>
 
     </LinearLayout>
   </ScrollView>

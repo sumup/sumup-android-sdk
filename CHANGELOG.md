@@ -1,6 +1,32 @@
 # Changelog
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
+## Version 6.0.0
+* [ADDED] Introduces Offline payments with Solo lite, please refer to the dedicated section in [OFFLINE_PAYMENTS.md](https://github.com/sumup/sumup-android-sdk/blob/master/OFFLINE_PAYMENTS.md) for more information.
+    * Please contact integrations@sumup.com for enabling offline payments on your SumUp merchant account.
+* [ADDED] Payment intent now also returns the card reader model and firmware version in new response fields `SumUpAPI.Response.CARD_READER_MODEL` and `SumUpAPI.Response.CARD_READER_FIRMWARE_VERSION` at the end of every transaction.
+* [IMPROVEMENT] Updates about the technical stack:
+    * Minimum supported targetSDK is 35
+    * Minimum Kotlin is upgraded to 1.9.0
+    * Minimum Kotlin Coroutine is upgraded to 1.8.0
+    * Minimum Hilt is upgraded to 2.51.1
+    * Minimum Moshi is upgraded to 1.15.0
+    * Minimum AppCompat is upgraded to 1.7.0
+    * Minimum AndroidX Annotation is upgraded to version 1.8.0
+    * Minimum AndroidX Activity is upgraded to version 1.9.1
+    * Minimum AndroidX Fragment is upgraded to version 1.7.1
+    * Minimum AndroidX Lifecycle is upgraded to version 2.8.1
+    * Minimum AndroidX Browser is upgraded to version 1.4.0
+    * Minimum AndroidX Navigation is upgraded to version 2.7.7
+    * Minimum Material Components is upgraded to 1.12.0
+    * Minimum Play Services Location is upgraded to 21.3.0
+    * Minimum AGP is upgraded to 8.8.0
+    * Building with AGP 8.8.0 and Java 17
+    * Introduces Jetpack Compose BOM version 2023.06.01
+    * Requires desugar_jdk_libs version 2.1.5
+*  [IMPROVEMENT] Renames package of TransactionInfo: `com.sumup.merchant.reader.models.TransactionInfo` > `com.sumup.checkout.core.models.TransactionInfo`
+*  [IMPROVEMENT] Renames package of SumUpState: `import com.sumup.merchant.api.SumUpState` > `import com.sumup.reader.sdk.api.SumUpState`
+
 ## Version 5.0.4
 * [FIXED] The SDK does not enforce landscape screen orientation on the Signature screen, similar to the rest of the payment flow.
 

@@ -61,3 +61,9 @@ SMC is dual licensed under Mozzile Public License, version 1.1 and GNU General P
 [Okio](https://github.com/square/okio)
 
 [LICENSE](https://github.com/square/okio/blob/master/LICENSE.txt)
+
+---
+
+[Sqlcipher](https://www.zetetic.net/sqlcipher/)
+
+[LICENSE](https://www.zetetic.net/sqlcipher/license/SQLCIPHER_COMMUNITY_EDITION_LICENSE.txt)
