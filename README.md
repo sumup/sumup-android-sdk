@@ -1,25 +1,31 @@
-# SumUp mPOS SDK - Android
+<div align="center">
 
-[![Platform](https://img.shields.io/badge/Platform-Android-brightgreen.svg?style=flat-square)](http://developer.android.com/index.html)
-[![API](https://img.shields.io/badge/API-16%2B-orange.svg?style=flat-square)](https://developer.android.com/about/versions/android-4.1.html)
+# SumUp Android SDK
+
+[![Platform](https://img.shields.io/badge/Platform-Android-brightgreen.svg)](http://developer.android.com/index.html)
+[![API](https://img.shields.io/badge/API-16%2B-orange.svg)](https://developer.android.com/about/versions/android-4.1.html)
+[![Documentation][docs-badge]](https://developer.sumup.com)
+[![License](https://img.shields.io/github/license/sumup/sumup-android-sdk)](./LICENSE)
+
+</div>
 
 This repository provides a step by step documentation for SumUp's native Android SDK, that enables you to integrate our proprietary card terminal(s) and its payment platform to accept credit and debit card payments (incl. VISA, MasterCard, American Express and more). The SDK communicates transparently to the card terminal(s) via Bluetooth (BLE 4.0). Upon initiating a checkout, the SDK guides your user using appropriate screens through each step of the payment process. As part of the process, SumUp provides also the card terminal setup screen, along with the cardholder signature verification screen. The checkout result is returned with the relevant data for your records.
 
 No sensitive card data is ever passed through to or stored on the merchant’s phone. All data is encrypted by the card terminal, which has been fully certified to the highest industry standards (PCI, EMV I & II, Visa, MasterCard & Amex).
 
-For more information about SumUp developer products, please refer to our <a href="http://docs.sumup.com/" target="_blank"> SumUp API documentation</a>.
-
+For more information about SumUp developer products, please refer to <a href="http://developer.sumup.com/" target="_blank">SumUp Developer portal</a> and the <a href="https://developer.sumup.com/terminal-payments/sdks/android-sdk" target="_blank">Android SDK</a> documentation.
 
 ## Prerequisites
-1. Registered for a merchant account via SumUp's [country websites](https://sumup.com/) (or received a test account)
-2. Received SumUp card terminal: Solo, Air, Air Lite or PIN+ Terminal
-3. Requested an Affiliate (Access) Key via [SumUp Dashboard](https://me.sumup.com/developers) for Developers
+
+1. Sign up for a merchant account via SumUp's [country websites](https://sumup.com/) (or received a test account)
+2. Obtain a SumUp card reader: Solo, Solo lite, Air, Air Lite or PIN+ Terminal
+3. Created an Affiliate Key in [SumUp Dashboard](https://developer.sumup.com/terminal-payments/sdks/android-sdk)
 4. SumUp SDK requires `minSdkVersion` 26 or later
-6. SumUp SDK ensures support for
-   - `targetSDK` 31 or later
-   - AGP 7.3.0 or later
-   - Kotlin version 1.7.21 or later
-   - Java 11 and later 
+5. SumUp SDK ensures support for
+   - `targetSDK` 35 or later
+   - AGP 8.8.0 or later
+   - Kotlin version 1.9.0 or later
+   - Java 17 and later 
 
 ## Compatibility
 
@@ -46,7 +52,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-implementation 'com.sumup:merchant-sdk:5.0.4'
+implementation 'com.sumup:merchant-sdk:6.0.0'
 ```
 
 
@@ -67,7 +73,8 @@ public class SampleApplication extends Application {
 ```
 
 ### 3. Login
-Before calling any features of the SumUp SDK, a registered SumUp merchant account needs to be logged in. Please go to https://me.sumup.com/developers to retrieve your Affiliate Key by entering the application ID of your app. (e.g. com.sumup.sdksampleapp)
+
+Before calling any features of the SumUp SDK, you need to login and provide your affiliate key. You can obtain an affiliate key by entering the application ID of your app. (e.g. com.sumup.sdksampleapp) in the [Affiliate Keys](https://me.sumup.com/settings/affiliate-keys) section of SumUp dashboard. To learn more about affiliate keys see the [Affiliate Keys](https://developer.sumup.com/tools/authorization/affiliate-keys) guide in our developer portal.
 
 ```java
 SumUpLogin sumupLogin = SumUpLogin.builder(mAffiliateKey).build();
@@ -117,6 +124,8 @@ Once logged in, you can start using the SumUp SDK to accept card payments. If no
    }
 ```
 
+### 6. Offline payments
+* For offline payments support, please refer to the [Offline payments](https://github.com/sumup/sumup-android-sdk/blob/master/OFFLINE_PAYMENTS.md) documentation.
 
 ## II. Additional features
 
@@ -147,7 +156,7 @@ Several response fields are available when the callback activity is called:
   * Type: String
   * Description: The transaction code associated with the payment
 * SumUpAPI.Response.TX_INFO
-  * Type: Parcelable of type com.sumup.merchant.Models.TransactionInfo
+  * Type: Parcelable of type com.sumup.checkout.core.models.TransactionInfo
   * Description: Transaction info object containing information about this transaction. It contains the following information:
     - Transaction Code
     - Merchant Code
@@ -165,6 +174,12 @@ Several response fields are available when the callback activity is called:
 * SumUpAPI.Response.RECEIPT_SENT
   * Type: boolean
   * Description: true if a receipt was issued to the customer, false otherwise
+* SumUpAPI.Response.CARD_READER_MODEL
+  * Type: String
+  * Description: The model of the card reader used for the transaction
+* SumUpAPI.Response.CARD_READER_FIRMWARE_VERSION
+  * Type: String
+  * Description: The firmware version of the card reader used for the transaction
 
 The response flags are provided within the Bundle that is passed back to the callback activity:
 
@@ -311,4 +326,6 @@ Please provide as much information as possible.
  [SumUp Android SDK Changelog](https://github.com/sumup/Android-MerchantSDK/blob/master/CHANGELOG.md)
 
 ## License
-[SumUp Android SDK License](https://github.com/sumup/Android-MerchantSDK/blob/master/LICENSE)
+[SumUp Android SDK License](https://github.com/sumup/sumup-android-sdk/blob/master/LICENSE)
+
+[docs-badge]: https://img.shields.io/badge/SumUp-documentation-white.svg?logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgY29sb3I9IndoaXRlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGggZD0iTTIyLjI5IDBIMS43Qy43NyAwIDAgLjc3IDAgMS43MVYyMi4zYzAgLjkzLjc3IDEuNyAxLjcxIDEuN0gyMi4zYy45NCAwIDEuNzEtLjc3IDEuNzEtMS43MVYxLjdDMjQgLjc3IDIzLjIzIDAgMjIuMjkgMFptLTcuMjIgMTguMDdhNS42MiA1LjYyIDAgMCAxLTcuNjguMjQuMzYuMzYgMCAwIDEtLjAxLS40OWw3LjQ0LTcuNDRhLjM1LjM1IDAgMCAxIC40OSAwIDUuNiA1LjYgMCAwIDEtLjI0IDcuNjlabTEuNTUtMTEuOS03LjQ0IDcuNDVhLjM1LjM1IDAgMCAxLS41IDAgNS42MSA1LjYxIDAgMCAxIDcuOS03Ljk2bC4wMy4wM2MuMTMuMTMuMTQuMzUuMDEuNDlaIiBmaWxsPSJjdXJyZW50Q29sb3IiLz4KPC9zdmc+
