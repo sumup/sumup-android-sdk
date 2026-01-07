@@ -4,27 +4,38 @@ on:
   issues:
     types: [labeled]
 
+permissions:
+  issues: read
+  contents: read
+
 jobs:
   create-jira:
     if: github.event.label.name == 'bug'
     runs-on: ubuntu-latest
     steps:
       - name: Create Jira Issue
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          JIRA_PROJECT_KEY: ${{ secrets.JIRA_PROJECT_KEY }}
+          JIRA_LABELS: ${{ secrets.JIRA_LABELS }}
+          JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
         run: |
           set -euo pipefail
 
           # Prepare fields
-          SUMMARY="[GitHub][Android SDK] ${{ github.event.issue.title }}"
-          ISSUE_URL="${{ github.event.issue.html_url }}"
-          ISSUE_BODY="${{ github.event.issue.body }}"
+          SUMMARY="[GitHub][Android SDK] $ISSUE_TITLE"
 
           # Build JSON payload in Atlassian Document Format (ADF)
           JSON_PAYLOAD=$(jq -n \
             --arg summary "$SUMMARY" \
             --arg url "$ISSUE_URL" \
             --arg body "$ISSUE_BODY" \
-            --arg project "${{ secrets.JIRA_PROJECT_KEY }}" \
-            --argjson labels '${{ secrets.JIRA_LABELS }}' \
+            --arg project "$JIRA_PROJECT_KEY" \
+            --argjson labels "$JIRA_LABELS" \
             '{
               fields: {
                 project: { key: $project },
@@ -63,7 +74,7 @@ jobs:
           )
 
           # Create Jira issue
-          curl -sS -u "${{ secrets.JIRA_USERNAME }}:${{ secrets.JIRA_API_TOKEN }}" -X POST \
+          curl -sS -u "$JIRA_USERNAME:$JIRA_API_TOKEN" -X POST \
             -H "Content-Type: application/json" \
             --data "$JSON_PAYLOAD" \
-            "${{ secrets.JIRA_BASE_URL }}/rest/api/3/issue"
+            "$JIRA_BASE_URL/rest/api/3/issue"
