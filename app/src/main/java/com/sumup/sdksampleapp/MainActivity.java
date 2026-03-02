@@ -14,7 +14,7 @@ import com.sumup.checkout.core.models.TransactionInfo;
 import com.sumup.merchant.reader.api.SumUpAPI;
 import com.sumup.merchant.reader.api.SumUpLogin;
 import com.sumup.merchant.reader.api.SumUpPayment;
-import com.sumup.merchant.reader.offline.OfflineSessionResult;
+import com.sumup.merchant.reader.offline.OfflineSessionState;
 import com.sumup.merchant.reader.offline.OfflineUploadFailureReasons;
 import com.sumup.merchant.reader.offline.callbacks.OfflineSessionCallback;
 import com.sumup.merchant.reader.offline.callbacks.SecurityPatchUpdateCallback;
@@ -88,7 +88,6 @@ public class MainActivity extends Activity {
                         .configureRetryPolicy(2000, 60000, true)
                         // optional: foreign transaction ID, must be unique!
                         .foreignTransactionId(UUID.randomUUID().toString()) // can not exceed 128 chars
-                        .optInOfflinePayments()
                         .build();
 
                 SumUpAPI.checkout(MainActivity.this, payment, REQUEST_CODE_PAYMENT);
@@ -182,11 +181,11 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 SumUpAPI.fetchCurrentOfflineSession(new OfflineSessionCallback() {
                     @Override
-                    public void onSessionInfoReceived(@NonNull OfflineSessionResult offlineSessionResult) {
+                    public void onSessionInfoReceived(@NonNull OfflineSessionState offlineSessionState) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                mOfflineSessionInfo.setText(offlineSessionResult.toString());
+                                mOfflineSessionInfo.setText(offlineSessionState.toString());
                             }
                         });
 

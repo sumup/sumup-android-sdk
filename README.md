@@ -3,7 +3,7 @@
 # SumUp Android SDK
 
 [![Platform](https://img.shields.io/badge/Platform-Android-brightgreen.svg)](http://developer.android.com/index.html)
-[![API](https://img.shields.io/badge/API-16%2B-orange.svg)](https://developer.android.com/about/versions/android-4.1.html)
+[![API](https://img.shields.io/badge/API-26%2B-orange.svg)](https://developer.android.com/about/versions/oreo/android-8.0)
 [![Documentation][docs-badge]](https://developer.sumup.com)
 [![License](https://img.shields.io/github/license/sumup/sumup-android-sdk)](./LICENSE)
 
@@ -22,7 +22,7 @@ For more information about SumUp developer products, please refer to <a href="ht
 3. Created an Affiliate Key in [SumUp Dashboard](https://developer.sumup.com/terminal-payments/sdks/android-sdk)
 4. SumUp SDK requires `minSdkVersion` 26 or later
 5. SumUp SDK ensures support for
-   - `targetSDK` 35 or later
+   - `targetSDK` 35
    - AGP 8.8.0 or later
    - Kotlin version 1.9.0 or later
    - Java 17 and later 
@@ -52,7 +52,7 @@ allprojects {
 Add the dependency to a module:
 
 ```groovy
-implementation 'com.sumup:merchant-sdk:6.0.0'
+implementation 'com.sumup:merchant-sdk:7.0.0'
 ```
 
 
@@ -107,6 +107,8 @@ Once logged in, you can start using the SumUp SDK to accept card payments. If no
             .foreignTransactionId(UUID.randomUUID().toString())  // can not exceed 128 chars
 	    // optional: skip the success screen
 	    .skipSuccessScreen()
+        // optional: time out for the success screen
+        .successScreenTimeout(3)
 	    // optional: skip the failed screen
             .skipFailedScreen()
             .build();
@@ -125,7 +127,7 @@ Once logged in, you can start using the SumUp SDK to accept card payments. If no
 ```
 
 ### 6. Offline payments
-* For offline payments support, please refer to the [Offline payments](https://github.com/sumup/sumup-android-sdk/blob/master/OFFLINE_PAYMENTS.md) documentation.
+* For offline payments support, please refer to the [Offline payments](https://github.com/sumup/sumup-android-sdk/blob/master/OFFLINE_PAYMENTS_V2.md) documentation.
 
 ## II. Additional features
 
@@ -247,6 +249,9 @@ If there are connectivity issues and the transaction status can not be retrieved
 The `foreignTransactionID` identifier will be associated with the transaction and can be used to retrieve details related to the transaction. See [API documentation](https://developer.sumup.com/rest-api/#tag/Transactions) for details. Please make sure that this ID is unique within the scope of the SumUp merchant account and sub-accounts. It must not be longer than 128 characters.
 The foreignTransactionID is available when the callback activity is called: `SumUpAPI.Param.FOREIGN_TRANSACTION_ID`
 
+#### Timeout on success screen
+Use `.successScreenTimeout(int seconds)` to configure the success screen duration (must be > 0), which automatically dismisses the screen after the specified time if the user has not closed it manually.
+
 #### Skip success screen
 To skip the success screen shown at the end of a successful transaction, the `skipSuccessScreen` parameter can be used. When using this parameter  your application is responsible for displaying the transaction result to the customer. In combination with the Receipts API your application can also send your own receipts, see [API documentation](https://developer.sumup.com/rest-api/#tag/Receipts) for details. Please note success screens will still be shown when using the SumUp Air Lite readers.
 
@@ -278,13 +283,31 @@ If a merchant account is currently logged in, it is possible to retrieve the dat
 	}
 ```
 
-### 7. Log out SumUp account
+### 7. Retrieve connected card reader's data
+
+You can use the following methods to check the connection status and retrieve details about the saved card reader:
+
+*   **`isCardReaderConnected()`**: Returns a `boolean` indicating if a card reader is currently connected.
+*   **`getSavedCardReaderDetails()`**: Returns an object containing the reader's serial number, type, and last known battery percentage.
+
+#### Supported Reader Types
+The reader type will be one of the following constants:
+*   `SOLO`
+*   `SOLO_LITE`
+*   `AIR`
+*   `THREE_G`
+*   `PIN_PLUS`
+*   `UNKNOWN` (Returned only if the SDK encounters an issue and cannot identify the reader type)
+
+> **Note on Battery Level:** The `lastKnownBatteryPercentage` is **not** real-time. It reflects the battery level recorded during the last transaction performed. As a result, this value is an approximation and may not match the current battery level exactly if the reader has been idle or charged since the last payment.
+
+### 8. Log out SumUp account
  ```java
  	SumUpAPI.logout();
  ```
 
 
-### 8. Enable ProGuard
+### 9. Enable ProGuard
 ```groovy
    buildTypes {
         release {
@@ -295,7 +318,7 @@ If a merchant account is currently logged in, it is possible to retrieve the dat
     }
 ```
 
-### 9. Use Google Location Services
+### 10. Use Google Location Services
        
 The SDK supports Google Location Services, to improve location accuracy and reduce power consumption.
 

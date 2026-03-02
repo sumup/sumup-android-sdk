@@ -1,8 +1,18 @@
 # Changelog
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
+## Version 7.0.0
+* [ADDED] `successScreenTimeout` in the payment builder to configure the duration of the success screen.
+* [ADDED] `getSavedCardReaderDetails()` to retrieve details of the saved card reader (serial number, type, and battery percentage).
+* [ADDED] `isCardReaderConnected()` to check if a card reader is currently connected.
+* [IMPROVEMENT] Offline transaction V2
+    * Changes the API and behavior about how offline transactions work.
+    * Explicit APIs to start and stop the offline session.
+    * Removal of Security Patch Validity API.
+    * [OFFLINE_PAYMENTS_V2.md](https://github.com/sumup/sumup-android-sdk/blob/master/OFFLINE_PAYMENTS_V2.md) for more information.
+
 ## Version 6.0.0
-* [ADDED] Introduces Offline payments with Solo lite, please refer to the dedicated section in [OFFLINE_PAYMENTS.md](https://github.com/sumup/sumup-android-sdk/blob/master/OFFLINE_PAYMENTS.md) for more information.
+* [ADDED] Introduces Offline payments with Solo lite, please refer to the dedicated section in [OFFLINE_PAYMENTS_V1.md](https://github.com/sumup/sumup-android-sdk/blob/master/OFFLINE_PAYMENTS.md) for more information.
     * Please contact integrations@sumup.com for enabling offline payments on your SumUp merchant account.
 * [ADDED] Payment intent now also returns the card reader model and firmware version in new response fields `SumUpAPI.Response.CARD_READER_MODEL` and `SumUpAPI.Response.CARD_READER_FIRMWARE_VERSION` at the end of every transaction.
 * [IMPROVEMENT] Updates about the technical stack:
