@@ -1,4 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SumUp SDK Sample App</string>
+    <string name="app_brand_name">SumUp</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_title">Demo App for SumUp Card Reader Integrators</string>
+    <string name="welcome_start_button">Start</string>
+
+    <!-- Checkout Screen -->
+    <string name="checkout_amount_label">Amount</string>
+    <string name="checkout_charge_button">Charge</string>
+    <string name="checkout_enter_amount">Enter amount</string>
+
+    <!-- Top Bar -->
+    <string name="top_bar_app_name">Demo App</string>
+    <string name="top_bar_no_reader">No Reader</string>
+    <string name="top_bar_offline">Offline</string>
+    <string name="top_bar_settings">Settings</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_close">Close settings</string>
+
+    <string name="settings_tipping_section">Tipping</string>
+    <string name="settings_tipping_title">Tipping</string>
+    <string name="settings_tipping_subtitle_on_reader">Customer adds the tip on the card reader</string>
+    <string name="settings_tipping_subtitle_manual">Connected reader can\'t collect tips — set a manual amount below</string>
+    <string name="settings_tipping_subtitle_no_reader">No card reader connected — pair one to configure tipping</string>
+    <string name="settings_tip_amount_title">Manual tip amount</string>
+    <string name="settings_tip_amount_subtitle">Added to the charge when tipping is enabled</string>
+    <string name="settings_tip_amount_placeholder">0.00</string>
+
+    <string name="settings_offline_mode_section">Offline Mode</string>
+    <string name="settings_offline_transactions_title">Offline Transactions</string>
+    <string name="settings_offline_transactions_subtitle">Start an offline session when needed and end the session to process the transactions</string>
+    <string name="settings_offline_start">Start</string>
+    <string name="settings_offline_end">End session</string>
+    <string name="settings_offline_session_active">Offline session active</string>
+    <string name="settings_offline_time_left">Time left</string>
+    <string name="settings_offline_transactions_count">Transactions</string>
+    <string name="settings_upload_transactions">Upload transactions</string>
+    <string name="settings_check_for_updates">Check for Updates</string>
+    <string name="settings_patch_version_format">Patch Version %1$s</string>
+
+    <string name="settings_dev_options_section">Development options</string>
+    <string name="settings_result_dialog_title">Display result dialog</string>
+    <string name="settings_result_dialog_subtitle">Show a dialog with the SDK result after each action</string>
+    <string name="settings_tx_success_title">Transaction Success</string>
+    <string name="settings_tx_success_subtitle">Display SumUp screen after a successful transaction</string>
+    <string name="settings_success_timeout_title">Success screen timeout</string>
+    <string name="settings_success_timeout_subtitle">Auto-dismiss the SumUp success screen after this many seconds. Leave empty to keep the default behaviour.</string>
+    <string name="settings_success_timeout_placeholder">Default</string>
+    <string name="settings_success_timeout_suffix">s</string>
+
+    <string name="settings_account_section">Account</string>
+    <string name="settings_logout">Log Out</string>
+
+    <!-- Result Dialog -->
+    <string name="result_dialog_title">Checkout Result</string>
+    <string name="result_dialog_result_code">Result Code</string>
+    <string name="result_dialog_message">Message</string>
+    <string name="result_dialog_tx_code">Transaction Code</string>
+    <string name="result_dialog_receipt_sent">Receipt Sent</string>
+    <string name="result_dialog_tx_info">Transaction Info</string>
+    <string name="result_dialog_dismiss">OK</string>
 </resources>

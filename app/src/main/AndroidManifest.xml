@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.sumup.sdksampleapp">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-      android:allowBackup="true"
-      android:icon="@drawable/icon"
-      android:label="@string/app_name"
-      android:name=".SampleApplication"
-      android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-
-    <activity
-      android:name="com.sumup.sdksampleapp.MainActivity"
-      android:label="@string/app_name"
-      android:exported="true">
+        android:name=".SampleApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        <activity
+            android:name=".presentation.MainActivity"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
