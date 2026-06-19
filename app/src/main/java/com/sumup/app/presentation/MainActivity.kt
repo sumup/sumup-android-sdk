@@ -27,11 +27,23 @@ import com.sumup.app.presentation.screen.CheckoutScreen
 import com.sumup.app.presentation.screen.SettingsScreen
 import com.sumup.app.presentation.screen.WelcomeScreen
 import com.sumup.app.presentation.theme.AppTheme
-import com.sumup.merchant.reader.api.SumUpAPI
+import com.sumup.merchant.reader.api.SumUpCardReaderPageContract
+import com.sumup.merchant.reader.api.SumUpCheckoutContract
+import com.sumup.merchant.reader.api.SumUpLoginContract
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
     private val viewModel: MainViewModel by viewModel()
+
+    private val loginLauncher = registerForActivityResult(SumUpLoginContract()) { result ->
+        viewModel.onLoginResult(result.data?.extras)
+    }
+    private val cardReaderPageLauncher = registerForActivityResult(SumUpCardReaderPageContract()) { result ->
+        viewModel.onCardReaderPageResult(result.data?.extras)
+    }
+    private val checkoutLauncher = registerForActivityResult(SumUpCheckoutContract()) { result ->
+        viewModel.onPaymentResult(result.data?.extras)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -46,17 +58,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    @Deprecated("Required by SumUp SDK which uses startActivityForResult")
-    @Suppress("DEPRECATION")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: android.content.Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            REQUEST_CODE_LOGIN -> viewModel.onLoginResult(data?.extras)
-            REQUEST_CODE_CARD_READER_PAGE -> viewModel.onCardReaderPageResult(data?.extras)
-            REQUEST_CODE_PAYMENT -> viewModel.onPaymentResult(data?.extras)
-        }
-    }
-
     override fun onResume() {
         super.onResume()
 
@@ -65,19 +66,10 @@ class MainActivity : ComponentActivity() {
 
     private fun handleSdkAction(actionRequest: SdkActionRequest) {
         when (actionRequest) {
-            is SdkActionRequest.OpenLogin ->
-                SumUpAPI.openLoginActivity(this, actionRequest.login, REQUEST_CODE_LOGIN)
-            is SdkActionRequest.StartCheckout ->
-                SumUpAPI.checkout(this, actionRequest.payment, REQUEST_CODE_PAYMENT)
-            SdkActionRequest.OpenCardReaderPage ->
-                SumUpAPI.openCardReaderPage(this, REQUEST_CODE_CARD_READER_PAGE)
+            is SdkActionRequest.OpenLogin -> loginLauncher.launch(actionRequest.login)
+            is SdkActionRequest.StartCheckout -> checkoutLauncher.launch(actionRequest.payment)
+            SdkActionRequest.OpenCardReaderPage -> cardReaderPageLauncher.launch(null)
         }
-    }
-
-    private companion object {
-        private const val REQUEST_CODE_LOGIN = 101
-        private const val REQUEST_CODE_PAYMENT = 102
-        private const val REQUEST_CODE_CARD_READER_PAGE = 103
     }
 }
 

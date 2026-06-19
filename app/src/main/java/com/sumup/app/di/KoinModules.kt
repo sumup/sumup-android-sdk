@@ -1,7 +1,5 @@
 package com.sumup.app.di
 
-import com.sumup.app.util.CoroutinesDispatcherProvider
-import com.sumup.app.util.DefaultCoroutinesDispatcherProvider
 import com.sumup.app.data.mapper.ConnectedReaderMapper
 import com.sumup.app.data.mapper.MerchantInfoMapper
 import com.sumup.app.data.mapper.OfflineSessionMapper
@@ -12,7 +10,9 @@ import com.sumup.app.domain.usecase.CreateLoginRequestUseCase
 import com.sumup.app.domain.usecase.ParsePaymentResultUseCase
 import com.sumup.app.domain.usecase.ParseSdkStatusUseCase
 import com.sumup.app.presentation.MainViewModel
-import org.koin.androidx.viewmodel.dsl.viewModel
+import com.sumup.app.util.CoroutinesDispatcherProvider
+import com.sumup.app.util.DefaultCoroutinesDispatcherProvider
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 internal val appModule = module {
@@ -42,7 +42,6 @@ internal val appModule = module {
             parseSdkStatusUseCase = get(),
             parsePaymentResultUseCase = get(),
             readerSdkRepository = get(),
-            dispatcherProvider = get(),
         )
     }
 }

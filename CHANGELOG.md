@@ -1,6 +1,15 @@
 # Changelog
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
+
+## Version 7.1.0
+* [ADDED] Support for target SDK 36.
+* [ADDED] Support for Android Gradle Plugin 9.x.
+* [ADDED] SumUpLoginContract, SumUpCardReaderPageContract, and SumUpCheckoutContract to support Activity Result API integrations. Existing onActivityResult-based integrations remain unchanged. Please refer to the documentation for more information.
+* [IMPROVEMENT] Reduced SDK size by approximately 8 MB.
+* [IMPROVEMENT] In offline sessions, totalApprovedAmount now includes tip amounts. 
+* **Important:** SDK v7.1.0 introduces internal changes that are not backward compatible. After upgrading and running the application with v7.1.0, downgrading to an earlier SDK version is not supported.
+
 ## Version 7.0.0
 * [ADDED] `successScreenTimeout` in the payment builder to configure the duration of the success screen.
 * [ADDED] `getSavedCardReaderDetails()` to retrieve details of the saved card reader (serial number, type, and battery percentage).

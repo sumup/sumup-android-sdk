@@ -9,9 +9,9 @@ import com.sumup.app.domain.model.MerchantInfo
 import com.sumup.app.domain.model.OfflineSdkError
 import com.sumup.app.domain.model.OfflineSession
 import com.sumup.app.domain.repository.ReaderSdkRepository
+import com.sumup.contract.offline.OfflineSessionState
+import com.sumup.contract.offline.OfflineUploadFailureReasons
 import com.sumup.merchant.reader.api.SumUpAPI
-import com.sumup.merchant.reader.offline.OfflineSessionState
-import com.sumup.merchant.reader.offline.OfflineUploadFailureReasons
 import com.sumup.merchant.reader.offline.callbacks.OfflineSessionCallback
 import com.sumup.merchant.reader.offline.callbacks.SecurityPatchUpdateCallback
 import com.sumup.merchant.reader.offline.callbacks.UploadOfflineTransactionsStatusListener
@@ -29,6 +29,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
+import kotlin.time.Duration.Companion.milliseconds
 
 internal class ReaderSdkRepositoryImpl(
     private val dispatcherProvider: CoroutinesDispatcherProvider,
@@ -59,7 +60,7 @@ internal class ReaderSdkRepositoryImpl(
     override fun connectedReaderFlow(intervalMs: Long): Flow<ConnectedReader?> = flow {
         emit(snapshotConnectedReader())
         while (true) {
-            delay(intervalMs)
+            delay(intervalMs.milliseconds)
             emit(snapshotConnectedReader())
         }
     }

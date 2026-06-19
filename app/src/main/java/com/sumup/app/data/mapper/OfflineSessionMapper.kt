@@ -1,7 +1,7 @@
 package com.sumup.app.data.mapper
 
 import com.sumup.app.domain.model.OfflineSession
-import com.sumup.merchant.reader.offline.OfflineSessionState
+import com.sumup.contract.offline.OfflineSessionState
 
 internal class OfflineSessionMapper {
 
