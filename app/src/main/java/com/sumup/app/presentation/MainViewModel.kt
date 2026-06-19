@@ -12,7 +12,6 @@ import com.sumup.app.domain.usecase.ParseSdkStatusUseCase
 import com.sumup.app.presentation.model.SdkActionRequest
 import com.sumup.app.presentation.model.UiEvent
 import com.sumup.app.presentation.model.UiState
-import com.sumup.app.util.CoroutinesDispatcherProvider
 import com.sumup.app.util.handleFailure
 import com.sumup.app.util.safelySuspend
 import com.sumup.merchant.reader.api.SumUpAPI
@@ -35,7 +34,6 @@ internal class MainViewModel(
     private val parseSdkStatusUseCase: ParseSdkStatusUseCase,
     private val parsePaymentResultUseCase: ParsePaymentResultUseCase,
     private val readerSdkRepository: ReaderSdkRepository,
-    private val dispatcherProvider: CoroutinesDispatcherProvider,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(UiState())

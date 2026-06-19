@@ -6,9 +6,8 @@ buildscript {
         google()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:8.9.1")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.20")
-        classpath("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.20")
+        classpath("com.android.tools.build:gradle:9.2.1")
+        classpath("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.4.0")
     }
 }
 
