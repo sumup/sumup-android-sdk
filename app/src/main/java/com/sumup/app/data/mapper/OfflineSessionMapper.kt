@@ -7,14 +7,16 @@ internal class OfflineSessionMapper {
 
     fun map(state: OfflineSessionState): OfflineSession = when (state) {
         is OfflineSessionState.NoActiveSession -> OfflineSession.Inactive
+        is OfflineSessionState.PendingUpload -> OfflineSession.Incomplete
         is OfflineSessionState.ActiveSession -> {
-            if (state.remainingTimeMillis <= 0) {
+            val sessionData = state.sessionData
+            if (sessionData.remainingTimeMillis <= 0) {
                 OfflineSession.Incomplete
             } else {
                 OfflineSession.Active(
-                    remainingTimeMillis = state.remainingTimeMillis,
-                    approvedTransactionCount = state.approvedTransactionCount,
-                    failedTransactionCount = state.failedTransactionCount,
+                    remainingTimeMillis = sessionData.remainingTimeMillis,
+                    approvedTransactionCount = sessionData.approvedTransactionCount,
+                    failedTransactionCount = sessionData.failedTransactionCount,
                 )
             }
         }

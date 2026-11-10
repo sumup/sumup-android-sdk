@@ -2,6 +2,36 @@
 
 For more information, see the [README](https://github.com/sumup/Android-MerchantSDK/blob/master/README.md)
 
+## Version 7.2.0
+* [ADDED] `SumUpPayment.Builder.tipPercentages()` to configure the tip options shown on the card reader when used together with `tipOnCardReader()`. Accepts 1 to 3 unique whole-number percentages between 1 and 99; defaults to 10%, 15% and 20% if not set. Please refer to the documentation for more information.
+
+```kotlin
+val payment = SumUpPayment.builder()
+    .total(BigDecimal("12.50"))
+    .currency(SumUpPayment.Currency.EUR)
+    .tipOnCardReader()
+    .tipPercentages(listOf(5, 10, 15))
+    .build()
+```
+
+* [CHANGED] Breaking change: `OfflineSessionState` has a new structure.
+  - Session details such as `remainingTimeMillis` and `approvedTransactionCount` moved from `ActiveSession` into the new sessionData property, e.g. `session.getRemainingTimeMillis()` becomes `session.getSessionData().getRemainingTimeMillis()`.
+  - New `PendingUpload` state: the session has ended but still has transactions to upload. Call `SumUpAPI.uploadOfflineTransactions(...)` to upload them. Kotlin when expressions over `OfflineSessionState` must now handle this state.
+
+```kotlin
+  when (state) {
+  is OfflineSessionState.NoActiveSession -> { }
+  is OfflineSessionState.ActiveSession -> state.sessionData.remainingTimeMillis
+  is OfflineSessionState.PendingUpload -> SumUpAPI.uploadOfflineTransactions(listener)
+  }
+  ```
+
+* [FIXED] The SDK no longer disables code obfuscation in integrating apps.(#276)
+* [FIXED] The app bar and navigation bar overlapped SDK screen content when targeting Android SDK 36 in Tablets. SDK screens now support edge-to-edge display. (#281)
+* [FIXED] A crash when calling `SumUpState.init()` more than once. Repeated calls are now ignored. (#268)
+* [FIXED] `SumUpAPI.isLoggedIn(`) returned true after `SumUpAPI.logout()` when logged in with an access token. (#284)
+* [FIXED] A crash during consecutive offline transactions with the success screen skipped.
+
 ## Version 7.1.0
 * [ADDED] Support for target SDK 36.
 * [ADDED] Support for Android Gradle Plugin 9.x.
